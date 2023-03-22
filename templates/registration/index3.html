@@ -1,0 +1,67 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<link rel="stylesheet" type="text/css" href="{% static 'login/style3.css' %}">
+		<meta charset="UTF-8">
+		<title>PARMA</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+    	{% block content %}
+		<header>
+			<a href="#">
+				<img src="{% static 'login/image.png' %}">
+			</a>
+		</header>
+		<div class="container">
+            <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+			<div class="authBlock">
+
+
+				<h1 class=authoriz>Авторизация</h1>
+				<p class=login>Логин</p>
+				<div class="input-form">
+                    <label>
+                        <input name="username">
+                    </label>
+                </div>
+
+				<p class=login>Пароль</p>
+				<div class="input-form">
+                    <label>
+                        <input name="password" type="password">
+                    </label>
+                </div>
+
+			</div>
+      
+			<button class="buttonSubmit">
+				<input type="submit" value="Войти">
+			</button>
+            </form>
+
+
+			<!-- эта ссыдка для открывания окна там сам работай с ней потом ее удали из файла -->
+			<a href="#openModalplus">Добавить сотрудника</a> 
+
+			
+			<div id="openModalplus" class="modalplus">
+				<a href="#close" title="Close" class="close">×</a>
+				
+				<div class="exeption">
+					<h1 class="exh1">Ошибка!</h1>
+				</div>
+				
+				<p class="exp">Вы ввели неправильный логин или пароль, попробуйте снова.</p>
+			</div>
+
+		</div>
+    	{% endblock %}
+	</body>
+</html>

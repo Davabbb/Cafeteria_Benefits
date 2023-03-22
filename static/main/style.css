@@ -1,0 +1,770 @@
+body 
+{
+	width: 1920px;
+    height: 2279px;
+	margin: 0px;
+
+}
+header {
+	background: #EC1C24;
+}
+.exit {
+	position: absolute;
+	top: 5px;
+	left: 1695px;
+	display: flex;
+	justify-content: left;
+	width: 260x;
+	height: 80px;
+	background: #D9D9D9;
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+}
+.exit:hover {
+	border-color:#323E49;
+ }
+.exit input {
+	background: none;
+	font-family: 'Montserrat';
+	border-radius: 90px;
+	margin-top: 10px;
+	color: #000000;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 44px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border: none;
+}
+
+.cartbtn {
+	margin: 0px;
+	position: absolute;
+	top: 190px;
+	left: 1395px;
+	display: flex;
+	justify-content: left;
+	width: 461px;
+	height: 101px;
+	background: #D9D9D9;
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+}
+.cartbtn:hover {
+	border-color:#323E49;
+ }
+.cartbtn input {
+	background: #D9D9D9;
+	font-family: 'Montserrat';
+	line-height: 49px;
+	border-radius: 90px;
+	margin-top: 20px;
+	color: #000000;
+	font-style: bold;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 44px;
+	align-items: center;
+	text-align: left;
+	text-indent: 43px;
+	letter-spacing: -0.03em;
+	border: none;
+}
+
+.staffbtn{
+    position: absolute;
+    top: 349px;
+    left: 1100px;
+    display: flex;
+	width: 419px;
+	height: 101px;
+	background: #D9D9D9;
+	border-radius: 60px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+}
+.staffbtn:hover {
+	border-color:#323E49;
+}
+.staffbtn input {
+	background: #D9D9D9;
+	font-family: 'Montserrat';
+	line-height: 49px;
+	border-radius: 90px;
+	margin-top: 20px;
+	color: #000000;
+	font-style: bold;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 44px;
+	align-items: center;
+	text-align: left;
+	text-indent: 43px;
+	letter-spacing: -0.03em;
+	border: none;
+}
+.stafficon{
+	margin-left: 14px;
+	margin-top: 2px;
+	width: 80px;
+	height: 80px;
+}
+
+.korsina{
+	margin-top: -4px;
+	margin-left: 65px;
+	width: 95px;
+	height: 95px;
+}
+
+.hystorysubmit{
+	background: #D9D9D9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat';
+	line-height: 49px;
+	color: #000000;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	letter-spacing: -0.03em;
+
+	margin: 0px;
+	position: absolute;
+	top: 506px;
+	left: 1395px;
+
+	vertical-align: middle;
+	width: 461px;
+	height: 101px;
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+	text-decoration: none;
+}
+.hystorysubmit:hover{
+	border-color: #323E49;
+}
+.fiod{
+	position: absolute;
+	top: 190px;
+	left: 516px;
+	display: flex;
+	width: 645px;
+	height: 118px;
+	background: #D9D9D9;
+	border-radius: 60px;
+}
+.fio{
+	margin: auto;
+	
+	width: 596px;
+	height: 85px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	display: flex;
+	align-items: center;
+	letter-spacing: -0.03em;
+
+	color: #0F2232;
+}
+.infd{
+	position: absolute;
+	top: 331px;
+	left: 516px;
+	display: flex;
+	width: 448px;
+	height: 192px;
+	background: #D9D9D9;
+	border-radius: 60px;
+}
+.post{
+	position: absolute;
+	left: 25px;
+	top: 35px;
+	width: 356px;
+	height: 78px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	color: #0F2232;
+}
+.experience{
+	position: absolute;
+	left: 25px;
+	bottom: 0px;
+	width: 356px;
+	height: 78px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	color: #0F2232;
+}
+.skin{
+	position: absolute;
+	top: 143px;
+	left: 47px;
+	display: flex;
+	width: 416px;
+	height: 428px;
+	background: #D9D9D9;
+	border-radius: 60px;
+}
+.person{
+	margin: auto;
+	width: 400px;
+	height: 400px;
+}
+.balld{
+	position: absolute;
+	top: 349px;
+	left: 1599px;
+	display: flex;
+	width: 257px;
+	height: 101px;
+	background: #D9D9D9;
+	border-radius: 60px;
+}
+.ballicon{
+	margin-left: 14px;
+	margin-top: 10px;
+	width: 80px;
+	height: 80px;
+}
+.ball{
+	margin: auto;
+	
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	color: #0F2232;
+}
+.textlgota{
+	margin: auto;
+	position: absolute;
+	left: 165px;
+	top: 594px;
+	width: 245px;
+	height: 40px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.03em;
+
+	color: #000000;
+}
+.poisklgota{
+	position: absolute;
+	left: 122px;
+	top: 662px;
+	width: 1676px;
+	height: 96px;
+
+	background: #D9D9D9;
+	border-radius: 60px;
+}
+.searchicon{
+	margin-top: 8px;
+	margin-left: 43px;
+	width: 80px;
+	height: 80px;
+}
+.searchinput{
+	margin: 0px;
+	position: absolute;
+	top: 7px;
+	margin-left: 30px;
+	width: 1470px;
+	height: 80px;
+	background: #D9D9D9;
+	padding: 0px;
+	border: 0px;
+	font-size: 40px;
+}
+.sortbtn{
+	position: absolute;
+	top: 786px;
+	left: 149px;
+	width: 479px;
+	height: 69px;
+	background: #fff;
+	padding: 0px;
+	border-style: solid;
+	border-radius: 60px;
+	border-color: #ffffff;
+	border-width:4px;
+}
+.sortbtn:hover{
+	border-color:#323E49;
+}
+.sorttext{
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 32px;
+}
+.sorticonl{
+	margin-bottom: 0px;
+	width: 40px;
+	height: 40px;
+}
+.sorticonr{
+	margin-bottom: -10px;
+	width: 40px;
+	height: 40px;
+}
+.spravkabtn{
+	margin: 0px;
+	position: absolute;
+	width: 766px;
+	height: 106px;
+	left: 1030px;
+	top: 766px;
+	background: #fff;
+	padding: 0px;
+	border: 4px solid #fff;
+	border-radius: 90px;
+}
+.spravkabtn:hover{
+	border-color: #323E49;
+}
+.spravkatext{
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 40px;
+}
+.spravkaiconr{
+	margin-bottom: -10px;
+	width: 40px;
+	height: 40px;
+}
+.list{
+	overflow: auto;
+	overflow-x: hidden;
+	position: absolute;
+	left: 122px;
+	top: 879px;
+	width: 1676px;
+	height: 1332px;
+	background: #323E49;
+}
+.lgota{
+	width: 100%;
+	height: 123px;
+	border: 3px solid #000000
+}
+.lgotaname{
+	position: absolute;
+	margin-top: 12px;
+	left: 27px;
+	width: 799px;
+	height: 99px;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	display: flex;
+	align-items: center;
+	letter-spacing: -0.055em;
+	color: #FFFFFF;
+}
+.lgotaprice{
+	position: absolute;
+	margin-top: 12px;
+	left: 988px;
+	width: 799px;
+	height: 99px;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	display: flex;
+	align-items: center;
+	letter-spacing: -0.055em;
+	color: #FFFFFF;
+}
+.lgotabtn{
+
+	position: absolute;
+	left: 80%;
+	width: 333px;
+	height: 123px;
+
+	background: #81C171;
+	border: 3px solid #000000;
+}
+.lgotabtn:hover{
+	background: #38e30e;
+}
+.lgotabtn:disabled{
+	background: #FF0000;
+}
+.lgotakorsina{
+	margin: auto;
+	width: 231.12px;
+	height: 68.61px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: -0.02em;
+
+color: #000000;
+}
+
+
+.modalhistory {
+    position: absolute;
+	width: 835px;
+	height: 1470px;
+	top: 404px;
+	left: 543px ;
+	background: #D9D9D9;
+	border-style: solid;
+	border-width: 8px;
+	border-radius: 60px;
+	border-color: #323E49;
+    z-index: 1050;
+    opacity: 0; /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in; 
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in; /* анимация перехода */
+    pointer-events: none; /* элемент невидим для событий мыши */
+    padding: 0;
+}
+/* При отображении модального окно */
+.modalhistory:target {
+    opacity: 1; /* делаем окно видимым */
+	  pointer-events: auto; /* элемент видим для событий мыши */
+}
+
+.close {
+	position: absolute;
+	left: 755px;
+	top: -5px;
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    color: #d11515;
+    opacity: 0.5;
+    text-decoration: none;
+}
+/* Стили для закрывающей кнопки в фокусе или наведении */
+.close:focus, .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+.historymodaldiv{
+	position: absolute;
+	margin-left: 187px;
+	margin-top: 60px;
+	width: 461px;
+	height: 101px;
+	background: #323E49;
+	border-radius: 50px;
+}
+.historymodalh1{
+	margin-top: 28px;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 44px;
+	text-align: center;
+	letter-spacing: -0.03em;
+	
+	color: #FFFFFF;
+}
+.historymodallist{
+	box-sizing: border-box;
+	padding: 42px;
+
+	overflow: auto;
+	overflow-x: hidden;
+	position: absolute;
+	left: 48px;
+	top: 240px;
+	width: 739px;
+	height: 1182px;
+	
+	background: #323E49;
+}
+.buy{
+	position: relative;
+	margin-left: -15px;
+	margin-top: -4px;
+	width: 677px;
+	height: 123px;
+	background: none;
+	border: 4px solid #000000;
+	color: #FFFFFF;
+}
+.buyname{
+	position: absolute;
+	left: 15px;
+	top: 35px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	color: #FFFFFF;
+}
+.buydate{
+	position: absolute;
+	left: 373px;
+	top: -4px;
+	width: 300px;
+	height: 100%;
+
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	border: 4px solid #000000;
+}
+
+.modalplus {
+    position: absolute;
+	width: 835px;
+	height: 930px;
+	top: 404px;
+	left: 543px ;
+	background: #D9D9D9;
+	border-style: solid;
+	border-width: 8px;
+	border-radius: 60px;
+	border-color: #323E49;
+    z-index: 1050;
+    opacity: 0; /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in; /* анимация перехода */
+    pointer-events: none; /* элемент невидим для событий мыши */
+    padding: 0;
+}
+/* При отображении модального окно */
+.modalplus:target {
+    opacity: 1; /* делаем окно видимым */
+	  pointer-events: auto; /* элемент видим для событий мыши */
+}
+.close {
+	position: absolute;
+	left: 755px;
+	top: -5px;
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    color: #d11515;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.close:focus, .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+
+.pluslgotainput{
+	position: relative;
+	width: 568px;
+	height: 121px;
+	background: #323E49;
+	border-radius: 60px;
+	margin-left:134px;
+	margin-top: 10px;
+}
+.pluslgotaname{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 44px;
+	width: 480px;
+	height: 80px;
+	background:#323E49;
+	color: #FFFFFF;
+	padding: 0px;
+	border: 0px;
+	border-bottom: 3px solid #FFFFFF;
+	font-size: 40px;
+}
+.pluslgotamoney{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 44px;
+	width: 480px;
+	height: 80px;
+	background:#323E49;
+	color: #FFFFFF;
+	padding: 0px;
+	border: 0px;
+	border-bottom: 3px solid #FFFFFF;
+	font-size: 40px;
+}
+
+.plusbtn {
+	position: relative;
+	border-radius: 60px;
+	margin-left: 187px;
+	margin-top: 60px;
+
+	display: flex;
+	justify-content: center;
+	width: 461px;
+	height: 101px;
+	background: #81C171;
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+}
+.plusbtn:hover {
+	border-color:#323E49;
+ }
+.plusbtn input {
+	background: none;
+
+	border-radius: 90px;
+	margin-top: 20px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.03em;
+	color: #000000;
+	display: inline-block;
+	text-align: center;
+	border: none;
+}
+
+.pluslgotamodal{
+	position: relative;
+	margin-left: 245px;
+	margin-top: 60px;
+	width: 345px;
+	height: 40px;
+	text-align: center;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.03em;
+
+	color: #000000;
+}
+.pluslgota{
+	margin: 0px;
+	position: absolute;
+	width: 260px;
+	height: 106px;
+	left: 700px;
+	top: 766px;
+	background: #fff;
+	padding: 0px;
+	border: 4px solid #fff;
+	border-radius: 90px;
+}
+.pluslgota:hover{
+	border-color: #323E49;
+}
+.pluslgotatext {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 40px;
+	line-height: 98.4%;
+	/* or 39px */
+
+	display: flex;
+	align-items: center;
+	text-align: center;
+	text-decoration: none;
+	justify-content: center;
+	letter-spacing: -0.02em;
+
+	color: #000000;
+}
+.lgotadelete {
+    position: relative;
+    left: 1230px;
+    top: -6px;
+    width: 80px;
+    height: 126px;
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    background: none;
+    border: none;
+    color: #d11515;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.lgotadelete:hover{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
+}

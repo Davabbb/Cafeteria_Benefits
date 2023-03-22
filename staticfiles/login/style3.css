@@ -1,0 +1,205 @@
+body 
+{
+	width: 1920px;
+	height: 1080px;
+	margin: 0px;
+}
+header {
+	background: #EC1C24;
+}
+.authBlock {
+	margin: auto;
+	position: relative;
+	width: 636px;
+	height: 451px;
+	padding: 1rem;
+	background: #323E49;
+	border-radius: 40px;
+}
+.authForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.authoriz {
+	margin:  auto auto auto auto;
+	width: 288px;
+	height: 68px;
+
+	font-family: 'Montserrat', sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 49px;
+
+	color: #FFFFFF;
+	text-align: center;
+	padding: 0;
+}
+.login {
+	text-align: left;
+	margin: 0.5rem 1rem;
+	font-family: 'Montserrat', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 39px;	
+	color: #FFFFFF;
+	position: static;
+	width: 184px;
+	height: 57px;
+	margin-left: 424px;
+	top: 89px;
+}
+.input-form {
+	margin: 1rem;
+	text-align: center;
+}
+.input-form input {
+	width: 538px;
+	height: 80px;
+	padding: 10px;
+	border-radius: 15px;
+	color: #fff;
+	font-size: 20px;
+	background: rgba(233, 236, 238, 0.5);
+	outline: none;
+	border: 0px;
+	box-sizing: border-box;
+	border-radius: 15px;
+}
+.buttonSubmit {
+
+	margin-top: 5%;
+	margin-left: 537px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #EC1C24;
+	border-radius: 90px;
+	width: 462px;
+	height: 110px;
+	color: #FFFFFF;
+	border: 8px solid #EC1C24;
+
+}
+.buttonSubmit:hover{
+	border-color: #323E49;
+}
+.buttonSubmit input {
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 49px;
+	color: #FFFFFF;
+
+	background: #EC1C24;
+	border-radius: 90px;
+	letter-spacing: -0.03em;
+	border: none;
+}
+.container {
+	margin-left: auto;
+	padding: 10% 10% 10% 10%;
+}
+
+
+
+
+
+.close {
+	position: relative;
+	top: 0px;
+	left: 580px;
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    color: #d11515;
+    opacity: 0.5;
+    text-decoration: none;
+}
+/* Стили для закрывающей кнопки в фокусе или наведении */
+.close:focus, .close:hover {
+    color: #1ab48e;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
+}
+.modalplus {
+ 
+	margin: auto;
+	position: absolute;
+	top: 282px;
+	left: 626px;
+	width: 668px;
+	height: 483px;
+	background: #323E49;
+	border-radius: 40px;
+
+    z-index: 1050;
+    opacity: 0; /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in; 
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in; /* анимация перехода */
+    pointer-events: none; /* элемент невидим для событий мыши */
+    padding: 0;
+}
+/* При отображении модального окно */
+.modalplus:target {
+    opacity: 1; /* делаем окно видимым */
+	  pointer-events: auto; /* элемент видим для событий мыши */
+}
+.exeption{
+	box-sizing: border-box;
+
+	position: absolute;
+	width: 464px;
+	height: 159px;
+	left: 102px;
+	top: 84px;
+
+	background: none;
+	border: 4px solid #FD0000;
+	border-radius: 90px;
+}
+.exh1{
+	margin-top: 28px;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 78px;
+
+	color: #EC1C24;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.exp{
+	position: absolute;
+	width: 545px;
+	height: 158px;
+	left: 46px;
+	top: 262px;
+
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 49px;
+
+	color: #FFFFFF;
+
+
+	/* Inside auto layout */
+
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	z-index: 2;
+}
