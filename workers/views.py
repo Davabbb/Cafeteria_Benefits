@@ -11,11 +11,11 @@ from .models import Worker
 
 
 def home(request):
-    user = User.objects.get(username=request.user.username)
-    first_name = user.worker.first_name
-    last_name = user.worker.last_name
-    email_ = user.worker.email
-    money = user.worker.money
+    worker, created = Worker.objects.get_or_create(user=request.user)
+    first_name = worker.first_name
+    last_name = worker.last_name
+    email_ = worker.email
+    money = worker.money
     data = {"first_name": first_name, "last_name": last_name, "email": email_, "money": money}
     return render(request, "landing/home.html", context=data)
 
