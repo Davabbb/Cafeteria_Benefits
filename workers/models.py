@@ -1,10 +1,12 @@
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 
 class Worker(models.Model):
     user = models.OneToOneField(User, related_name="worker", unique=True, blank=True, null=True, default=None,
-                                on_delete=models.DO_NOTHING)
+                                on_delete=models.CASCADE)
 
     first_name = models.CharField(max_length=128, blank=True, null=True, default=None)
     last_name = models.CharField(max_length=128, blank=True, null=True, default=None)
@@ -22,3 +24,9 @@ class Worker(models.Model):
     class Meta:
         verbose_name = 'Работник'
         verbose_name_plural = 'Работники'
+
+@receiver (post_save, sender=User)
+def user_created(sender, instance=None, created=False, **kwargs):
+    if created:
+        Worker.objects.create(user=instance, )
+
