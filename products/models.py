@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Product(models.Model):
     name = models.CharField(max_length=128, blank=True, null=True, default=None)
@@ -12,3 +12,11 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Льгота'
         verbose_name_plural = 'Льготы'
+
+class Purchase(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchases')
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.username} bought {self.product.name} on {self.date}'

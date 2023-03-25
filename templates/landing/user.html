@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{% url 'logout' %}">Logout</a>
+          <p> Имя - {{ user.first_name }}</p>
+          <p> Фамилия - {{ user.last_name }}</p>
+          <p> Почта - {{ user.email }}</p>
+          <p> Баланс - {{ user.money }}</p>
+  <h2>Список льгот</h2>
+  <ul>
+    {% for product in products %}
+      <li>{{ product.name }} - {{ product.price }} руб.
+        <form method="post" action="{% url 'product_purchase' product.pk %}">
+          {% csrf_token %}
+          <input type="submit" value="Купить">
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+  <h2>Список приобретённых льгот</h2>
+  <ul>
+    {% if purchases %}
+    {% for purchase in purchases %}
+      <li>{{ purchase }}</li>
+    {% endfor %}
+    {% endif %}
+  </ul>
+{% endblock %}

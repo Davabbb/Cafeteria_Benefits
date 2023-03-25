@@ -28,5 +28,5 @@ class Worker(models.Model):
 @receiver (post_save, sender=User)
 def user_created(sender, instance=None, created=False, **kwargs):
     if created:
-        Worker.objects.create(user=instance, )
+        Worker.objects.get_or_create(user=instance, )
 
