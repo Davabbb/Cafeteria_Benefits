@@ -15,8 +15,8 @@ class Worker(models.Model):
     email = models.EmailField(blank=True, null=True, default=None)
 
     speciality = models.CharField(max_length=128, blank=True, null=True, default=None)
-    experience = models.DecimalField(max_digits=30, decimal_places=0, blank=True, null=True, default=None)
-    money = models.DecimalField(max_digits=10000, decimal_places=2, blank=True, null=True, default=None)
+    experience = models.DecimalField(max_digits=30, decimal_places=0, blank=True, null=True, default=0)
+    money = models.DecimalField(max_digits=10000, decimal_places=2, blank=True, null=True, default=0)
 
     def __str__(self):
         return "Работник %s" % self.id
@@ -24,6 +24,7 @@ class Worker(models.Model):
     class Meta:
         verbose_name = 'Работник'
         verbose_name_plural = 'Работники'
+
 
 @receiver (post_save, sender=User)
 def user_created(sender, instance=None, created=False, **kwargs):

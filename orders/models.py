@@ -9,7 +9,7 @@ class Order(models.Model):
     benefit = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchases')
     date_purchased = models.DateTimeField(auto_now_add=True)                                
 
-    def __str__(self):
+    def __str__(self):жд
         return "Заказ %s" % self.id
 
     class Meta:

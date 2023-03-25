@@ -11,3 +11,12 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 
+
+class PurchaseAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in Purchase._meta.fields]
+
+    class Meta:
+        model = Purchase
+
+
+admin.site.register(Purchase, PurchaseAdmin)

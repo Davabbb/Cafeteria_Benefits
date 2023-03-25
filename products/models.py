@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Product(models.Model):
     name = models.CharField(max_length=128, blank=True, null=True, default=None)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=None)
@@ -13,6 +14,7 @@ class Product(models.Model):
         verbose_name = 'Льгота'
         verbose_name_plural = 'Льготы'
 
+
 class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchases')
@@ -20,3 +22,7 @@ class Purchase(models.Model):
 
     def __str__(self):
         return f'{self.user.username} bought {self.product.name} on {self.date}'
+
+    class Meta:
+        verbose_name = 'Покупка'
+        verbose_name_plural = 'Покупки'
