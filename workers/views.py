@@ -36,8 +36,13 @@ def user(request):
 @login_required
 def product_purchase(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    purchase = Purchase(product=product, user=request.user)
-    purchase.save()
+    worker = request.user.worker
+    if product.price <= worker.money:
+        worker.money -= product.price
+        purchase = Purchase(product=product, user=request.user)
+        purchase.save()
+        worker.save()
+    
     return redirect('user')
 
 class SignUp(CreateView):

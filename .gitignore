@@ -1,4 +1,6 @@
 Django_aboba/__pycache__/
 orders/__pycache__/
 products/__pycache__/
+products/migrations/
 workers/__pycache__/
+workers/migrations/

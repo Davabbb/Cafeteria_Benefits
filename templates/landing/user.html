@@ -12,7 +12,11 @@
       <li>{{ product.name }} - {{ product.price }} руб.
         <form method="post" action="{% url 'product_purchase' product.pk %}">
           {% csrf_token %}
-          <input type="submit" value="Купить">
+          {% if user.money < product.price %}
+            <input type="submit" value="Купить" disabled>
+          {% else %}
+            <input type="submit" value="Купить">
+          {% endif %}
         </form>
       </li>
     {% endfor %}
