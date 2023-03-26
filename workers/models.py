@@ -19,7 +19,7 @@ class Worker(models.Model):
     money = models.DecimalField(max_digits=10000, decimal_places=2, blank=True, null=True, default=0)
 
     def __str__(self):
-        return "Работник %s" % self.id
+        return "Работник %s" % self.user
 
     class Meta:
         verbose_name = 'Работник'
