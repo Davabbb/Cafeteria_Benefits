@@ -18,6 +18,8 @@ class Worker(models.Model):
     experience = models.DecimalField(max_digits=30, decimal_places=0, blank=True, null=True, default=0)
     money = models.DecimalField(max_digits=10000, decimal_places=2, blank=True, null=True, default=0)
 
+    city = models.CharField(max_length=128, blank=True, null=True, default=None)
+
     def __str__(self):
         return "Работник %s" % self.user
 
