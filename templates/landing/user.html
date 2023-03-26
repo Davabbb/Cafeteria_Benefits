@@ -18,6 +18,14 @@
             <input type="submit" value="Купить">
           {% endif %}
         </form>
+        <form method="post" action="{% url 'add_to_wishlist' product.pk %}">
+          {% csrf_token %}
+          {% if product in wishlist %}
+          <input type="submit" value="Добавить" disabled>
+          {% else %}
+            <input type="submit" value="Добавить">
+          {% endif %}
+        </form>
       </li>
     {% endfor %}
   </ul>
@@ -26,6 +34,27 @@
     {% if purchases %}
     {% for purchase in purchases %}
       <li>{{ purchase }}</li>
+    {% endfor %}
+    {% endif %}
+  </ul>
+  <h2>Список желаний</h2>
+  <ul>
+    {% if wishlist %}
+    {% for product in wishlist %}
+    <li>{{ product.name }} - {{ product.price }} руб.
+      <form method="post" action="{% url 'product_purchase' product.pk %}">
+        {% csrf_token %}
+        {% if user.money < product.price %}
+          <input type="submit" value="Купить" disabled>
+        {% else %}
+          <input type="submit" value="Купить">
+        {% endif %}
+      </form>
+      <form method="post" action="{% url 'remove_from_wishlist' product.pk %}">
+        {% csrf_token %}
+        <input type="submit" value="Удалить">
+      </form>
+    </li>
     {% endfor %}
     {% endif %}
   </ul>

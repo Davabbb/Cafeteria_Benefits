@@ -8,9 +8,9 @@ class Worker(models.Model):
     user = models.OneToOneField(User, related_name="worker", unique=True, blank=True, null=True, default=None,
                                 on_delete=models.CASCADE)
 
-    first_name = models.CharField(max_length=128, blank=True, null=True, default=None)
-    last_name = models.CharField(max_length=128, blank=True, null=True, default=None)
-    surname = models.CharField(max_length=128, blank=True, null=True, default=None)
+    first_name = models.CharField(max_length=128, blank=True, null=True, default=None) # Имя
+    last_name = models.CharField(max_length=128, blank=True, null=True, default=None) # Фамилия
+    surname = models.CharField(max_length=128, blank=True, null=True, default=None) # Отчество
 
     email = models.EmailField(blank=True, null=True, default=None)
 

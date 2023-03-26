@@ -21,6 +21,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('user', views.user, name='user'),
     path('purchase/<int:pk>/', views.product_purchase, name='product_purchase'),
+    path('wishlist_add/<int:pk>', views.add_to_wishlist, name='add_to_wishlist'),
+    path('wishlist_remove/<int:pk>', views.remove_from_wishlist, name='remove_from_wishlist'),
     # path('signup/', views.SignUp.as_view(), name='signup'),
     path('login/', views.login_view, name='login'),
 ]

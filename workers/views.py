@@ -8,7 +8,7 @@ from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Worker
-from products.models import Product, Purchase
+from products.models import *
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
@@ -30,11 +30,13 @@ def user(request):
     worker = request.user.worker
     products = Product.objects.all()
     purchases = request.user.purchases.all()
+    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
 
     context = {
         'user': worker,
         'products': products,
-        'purchases': purchases
+        'purchases': purchases,
+        'wishlist': wishlist.products.all()
     }
     return render(request, 'landing/user.html', context)
 
@@ -43,11 +45,30 @@ def user(request):
 def product_purchase(request, pk):
     product = get_object_or_404(Product, pk=pk)
     worker = request.user.worker
+    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
     if product.price <= worker.money:
         worker.money -= product.price
         purchase = Purchase(product=product, user=request.user)
+        if product in wishlist.products.all():
+            wishlist.products.remove(product)
+            wishlist.save()
         purchase.save()
         worker.save()
+    return redirect('user')
+
+@login_required
+def add_to_wishlist(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+    if product not in wishlist.products.all():
+        wishlist.products.add(product)
+    return redirect('user')
+
+@login_required
+def remove_from_wishlist(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    wishlist = get_object_or_404(Wishlist, user=request.user)
+    wishlist.products.remove(product)
     return redirect('user')
 
 
