@@ -56,6 +56,7 @@ def product_purchase(request, pk):
         worker.save()
     return redirect('user')
 
+
 @login_required
 def add_to_wishlist(request, pk):
     product = get_object_or_404(Product, pk=pk)
@@ -63,6 +64,7 @@ def add_to_wishlist(request, pk):
     if product not in wishlist.products.all():
         wishlist.products.add(product)
     return redirect('user')
+
 
 @login_required
 def remove_from_wishlist(request, pk):
@@ -87,6 +89,6 @@ def login_view(request):
             login(request, user)
             return redirect('home')
         else:
-            return render(request, 'registration/login.html', {'error_message': 'Invalid login credentials'})
+            return render(request, 'registration/login.html', {'error_message': 'Ошибка!'})
     else:
         return render(request, 'registration/login.html')
