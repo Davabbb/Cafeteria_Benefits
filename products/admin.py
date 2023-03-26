@@ -20,3 +20,13 @@ class PurchaseAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Purchase, PurchaseAdmin)
+
+
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in Wishlist._meta.fields]
+
+    class Meta:
+        model = Wishlist
+
+
+admin.site.register(Wishlist, WishlistAdmin)

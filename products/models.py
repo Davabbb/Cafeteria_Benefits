@@ -35,3 +35,7 @@ class Wishlist(models.Model):
 
     def __str__(self):
         return f'Wishlist of {self.user.username}'
+
+    class Meta:
+        verbose_name = 'Льгота в желаниях'
+        verbose_name_plural = 'Льготы в желаниях'
