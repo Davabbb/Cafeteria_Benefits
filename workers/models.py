@@ -26,8 +26,7 @@ class Worker(models.Model):
         verbose_name_plural = 'Работники'
 
 
-@receiver (post_save, sender=User)
+@receiver(post_save, sender=User)
 def user_created(sender, instance=None, created=False, **kwargs):
     if created:
         Worker.objects.get_or_create(user=instance, )
-
