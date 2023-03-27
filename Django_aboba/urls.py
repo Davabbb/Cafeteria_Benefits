@@ -15,6 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+
+
+def handler404(request, exception):
+    return TemplateView.as_view(template_name="404/404.html")(request)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +31,6 @@ urlpatterns = [
     path('home/', include('workers.urls')),
     path('home/user', include('workers.urls')),
 ]
+
+
+handler404 = handler404

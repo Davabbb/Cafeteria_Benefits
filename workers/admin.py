@@ -15,7 +15,7 @@ from django.contrib.auth.admin import UserAdmin
 #     class Meta:
 #         model = Order
 
-#TEST
+#404
 class UserInline(admin.StackedInline):
     model = Worker
     can_delete = False
@@ -28,7 +28,7 @@ class UserAdmin(UserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-#TEST
+#404
 
 admin.site.register(Worker)
 
