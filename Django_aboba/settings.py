@@ -25,9 +25,8 @@ SECRET_KEY = 'django-insecure-!wjrmo$(av14wp*v)xmkdn2qxsp5&llp-mt*3_=i!r8a^8wn!f
 # DEBUG = True
 # ALLOWED_HOSTS = []
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1']
-
 
 # Application definition
 
@@ -124,8 +123,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static', ),)  # добавил из видео
-
 LOGIN_REDIRECT_URL = "home"  # добавил сам
 LOGOUT_REDIRECT_URL = "login"
 AUTH_PROFILE_MODULE = "django_app.workers"
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static', ),)  # добавил из видео
+STATICFILES_DIRS = [str(BASE_DIR / "static")]
