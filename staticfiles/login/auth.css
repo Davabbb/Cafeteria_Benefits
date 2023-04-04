@@ -1,0 +1,80 @@
+body 
+{
+	margin: 0;
+}
+header {
+	background: #EC1C24;
+}
+.authBlock {
+	position: relative;
+	box-sizing: border-box;
+	padding: 1rem;
+	background: #323E49;
+	border-radius: 40px;
+}
+.authForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.bigbalddavid {
+	text-align: center;
+	font-family: 'Montserrat', serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 49px;
+	padding: 0;
+	color: #FFFFFF;
+}
+.smalldavid {
+	text-align: right;
+	margin: 0.5rem 1rem;
+	font-family: 'Montserrat', serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 39px;	
+	color: #FFFFFF;
+}
+.input-form {
+	margin: 1rem;
+	text-align: center;
+}
+.input-form input {
+	padding: 10px;
+	width: 100%;
+	color: #fff;
+	font-size: 20px;
+	background: rgba(233, 236, 238, 0.5);
+	outline: none;
+	border: 0px;
+	box-sizing: border-box;
+	border-radius: 15px;
+}
+.buttonSubmit {
+	margin-top: 13%;
+	display: flex;
+	justify-content: center;
+}
+.buttonSubmit input {
+	background: #EC1C24;
+	font-family: 'Montserrat', serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 49px;
+	border-radius: 90px;
+	color: #FFFFFF;
+	border: 1px solid #EC1C24;
+	padding: 2rem 3rem;
+}
+.container {
+	padding: 5% 35%;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
