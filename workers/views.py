@@ -22,13 +22,13 @@ def home(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    data = {"first_name": first_name,
-            "last_name": last_name,
-            "email": email_,
-            "money": money,
-            "spec": speciality
-            }
-    return render(request, "landing/home.html", context=data)
+    context = {"first_name": first_name,
+               "last_name": last_name,
+               "email": email_,
+               "money": money,
+               "spec": speciality
+               }
+    return render(request, "landing/home.html", context=context)
 
 
 @login_required
@@ -111,12 +111,16 @@ def shop(request):
     speciality = worker.speciality
 
     products = Product.objects.all()
-    data = {"first_name": first_name,
-            "last_name": last_name,
-            "email": email_,
-            "money": money,
-            "surname": surname,
-            "spec": speciality,
-            "products": products,
-            }
-    return render(request, 'main/index.html', context=data)
+    is_admin = request.user.is_superuser
+    print(is_admin)
+
+    context = {"admin": is_admin,
+               "first_name": first_name,
+               "last_name": last_name,
+               "email": email_,
+               "money": money,
+               "surname": surname,
+               "spec": speciality,
+               "products": products,
+               }
+    return render(request, 'main/index.html', context=context)
