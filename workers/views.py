@@ -22,7 +22,12 @@ def home(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    data = {"first_name": first_name, "last_name": last_name, "email": email_, "money": money, "spec": speciality}
+    data = {"first_name": first_name,
+            "last_name": last_name,
+            "email": email_,
+            "money": money,
+            "spec": speciality
+            }
     return render(request, "landing/home.html", context=data)
 
 
@@ -104,6 +109,14 @@ def shop(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    data = {"first_name": first_name, "last_name": last_name, "email": email_, "money": money,
-            "surname": surname, "spec": speciality}
+
+    products = Product.objects.all()
+    data = {"first_name": first_name,
+            "last_name": last_name,
+            "email": email_,
+            "money": money,
+            "surname": surname,
+            "spec": speciality,
+            "products": products,
+            }
     return render(request, 'main/index.html', context=data)

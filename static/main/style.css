@@ -39,6 +39,13 @@ header {
 	letter-spacing: -0.03em;
 	border: none;
 }
+
+buttonSubmit:hover {
+	background: rgba(0,0,0,0);
+	color: #3a7999;
+	box-shadow: inset 0 0 0 3px #3a7999;
+}
+
 .korsina{
 	margin-top: 3px;
 	margin-left: 65px;

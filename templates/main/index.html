@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +17,19 @@
 <body>
     <header>
         <a href="#">
-            <img src="image.png">
+            <img src="{% static 'login/image.png' %}">
         </a>
     </header>
 
+
     <button class="buttonSubmit">
         <input type="submit" value="Корзина">
-        <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
+        <a href="{% url 'user' %}">
+            <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
+        </a>
     </button>
+
+
 
     <div class="fiod">
         <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>
@@ -53,17 +60,30 @@
         <ion-icon class="spravkaiconr" name="chevron-down-outline"></ion-icon>
     </button>
 
-    {% for product in products %}
+
     <div class="list">
-        <div class="lgota">
-            <span class="lgotaname">{{ product.name }}</span>
-            <span class="lgotaprice">{{ product.price }}</span>
-            <button class="lgotabtn">
-                <span class="lgotakorsina">В корзину</span>
-            </button>
-        </div>
+        {% for product in products %}
+            <div class="lgota">
+                <span class="lgotaname">{{ product.name }}</span>
+                <span class="lgotaprice">{{ product.price }}</span>
+                <button class="lgotabtn">
+                    <span class="lgotakorsina">
+                        <form method="post" action="{% url 'add_to_wishlist' product.pk %}">
+                          {% csrf_token %}
+                          {% if product in wishlist %}
+                          <input type="submit" value="Добавить" disabled>
+                          {% else %}
+                            <input type="submit" value="Добавить">
+                          {% endif %}
+                        </form>
+                    </span>
+                </button>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+
+
 
 </body>
 </html>
