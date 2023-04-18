@@ -2,6 +2,7 @@
 
 {% block content %}
     <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'shop' %}">НАЗАД</a>
           <p> Имя - {{ user.first_name }}</p>
           <p> Фамилия - {{ user.last_name }}</p>
           <p> Почта - {{ user.email }}</p>

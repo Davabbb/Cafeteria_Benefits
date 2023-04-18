@@ -25,4 +25,6 @@ urlpatterns = [
     path('wishlist_remove/<int:pk>', views.remove_from_wishlist, name='remove_from_wishlist'),
     # path('signup/', views.SignUp.as_view(), name='signup'),
     path('login/', views.login_view, name='login'),
+
+    path('shop', views.shop, name='shop'),
 ]

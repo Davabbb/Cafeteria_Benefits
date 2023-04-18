@@ -21,7 +21,8 @@ def home(request):
     last_name = worker.last_name
     email_ = worker.email
     money = worker.money
-    data = {"first_name": first_name, "last_name": last_name, "email": email_, "money": money}
+    speciality = worker.speciality
+    data = {"first_name": first_name, "last_name": last_name, "email": email_, "money": money, "spec": speciality}
     return render(request, "landing/home.html", context=data)
 
 
@@ -92,3 +93,17 @@ def login_view(request):
             return render(request, 'registration/login.html', {'error_message': 'Ошибка!'})
     else:
         return render(request, 'registration/login.html')
+
+
+@login_required
+def shop(request):
+    worker, created = Worker.objects.get_or_create(user=request.user)
+    first_name = worker.first_name
+    last_name = worker.last_name
+    surname = worker.surname
+    email_ = worker.email
+    money = worker.money
+    speciality = worker.speciality
+    data = {"first_name": first_name, "last_name": last_name, "email": email_, "money": money,
+            "surname": surname, "spec": speciality}
+    return render(request, 'main/index.html', context=data)
