@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static/main/style.css">
+	<meta charset="UTF-8">
+	<title>PARMA</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="#">
+            <img src="image.png">
+        </a>
+    </header>
+
+    <button class="buttonSubmit">
+        <input type="submit" value="Корзина">
+        <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
+    </button>
+
+    <div class="fiod">
+        <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>
+    </div>
+    <div class="infd">
+        <span class="post">{{ spec }}</span>
+        <span class="experience">Стаж 1000 лет</span>
+    </div>
+    <div class="skin">
+        <ion-icon class="person" name="person-outline"></ion-icon>
+    </div>
+    <div class="balld">
+        <ion-icon class="ballicon" name="ticket-outline">Баллов</ion-icon>
+        <span class="ball">{{ money }}</span>
+    </div>
+    <h1 class="textlgota">Поиск льгот</h1>
+    <div class="poisklgota">
+        <ion-icon class="searchicon" name="search-outline"></ion-icon>
+        <input class="searchinput" type="text">
+    </div>
+    <button class="sortbtn">
+        <ion-icon class="sorticonl" name="stats-chart"></ion-icon>
+        <span class="sorttext">Сортировать: по цене </span>
+        <ion-icon class="sorticonr" name="chevron-down-outline"></ion-icon>
+    </button>
+    <button class="spravkabtn">
+        <span class="spravkatext">Справка по получению баллов</span>
+        <ion-icon class="spravkaiconr" name="chevron-down-outline"></ion-icon>
+    </button>
+
+    {% for product in products %}
+    <div class="list">
+        <div class="lgota">
+            <span class="lgotaname">{{ product.name }}</span>
+            <span class="lgotaprice">{{ product.price }}</span>
+            <button class="lgotabtn">
+                <span class="lgotakorsina">В корзину</span>
+            </button>
+        </div>
+    </div>
+    {% endfor %}
+
+</body>
+</html>
