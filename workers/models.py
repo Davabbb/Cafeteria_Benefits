@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -32,3 +33,16 @@ class Worker(models.Model):
 def user_created(sender, instance=None, created=False, **kwargs):
     if created:
         Worker.objects.get_or_create(user=instance, )
+
+
+class Receipt(models.Model):
+    worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    image = models.ImageField(upload_to='receipts/', blank=False, null=False)
+
+    def __str__(self):
+        return "Дата добавления %s" % self.date
+
+    class Meta:
+        verbose_name = 'Чек'
+        verbose_name_plural = 'Чеки'
