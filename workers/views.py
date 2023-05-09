@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -7,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Worker
+from .models import *
 from products.models import *
 
 from django.contrib.auth import authenticate, login, logout
@@ -60,7 +61,7 @@ def product_purchase(request, pk):
             wishlist.save()
         purchase.save()
         worker.save()
-    return redirect('user')
+    return redirect('/cart')
 
 
 @login_required
@@ -69,7 +70,7 @@ def add_to_wishlist(request, pk):
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
     if product not in wishlist.products.all():
         wishlist.products.add(product)
-    return redirect('user')
+    return redirect('/home')
 
 
 @login_required
@@ -77,7 +78,7 @@ def remove_from_wishlist(request, pk):
     product = get_object_or_404(Product, pk=pk)
     wishlist = get_object_or_404(Wishlist, user=request.user)
     wishlist.products.remove(product)
-    return redirect('user')
+    return redirect('/home')
 
 
 class SignUp(CreateView):
@@ -102,25 +103,95 @@ def login_view(request):
 
 @login_required
 def shop(request):
-    worker, created = Worker.objects.get_or_create(user=request.user)
+    worker, _ = Worker.objects.get_or_create(user=request.user)
     first_name = worker.first_name
     last_name = worker.last_name
     surname = worker.surname
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
+    expirience = worker.experience
 
     products = Product.objects.all()
     is_admin = request.user.is_superuser
     print(is_admin)
+    purchases = request.user.purchases.all().order_by('-date')
+    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
 
     context = {"admin": is_admin,
                "first_name": first_name,
                "last_name": last_name,
                "email": email_,
                "money": money,
+               "expirience": expirience,
                "surname": surname,
                "spec": speciality,
                "products": products,
+               "purchases": purchases,
+               "wishlist": wishlist.products.all(),
                }
-    return render(request, 'main/index.html', context=context)
+    return render(request, 'main/home.html', context=context)
+
+@login_required
+def cart(request):
+    worker, _ = Worker.objects.get_or_create(user=request.user)
+    first_name = worker.first_name
+    last_name = worker.last_name
+    surname = worker.surname
+    email_ = worker.email
+    money = worker.money
+    speciality = worker.speciality
+    expirience = worker.experience
+
+    products = Product.objects.all()
+    purchases = request.user.purchases.all().order_by('-date')
+    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+
+    context = {"first_name": first_name,
+               "last_name": last_name,
+               "email": email_,
+               "money": money,
+               "expirience": expirience,
+               "surname": surname,
+               "spec": speciality,
+               "products": products,
+               "purchases": purchases,
+               "wishlist": wishlist.products.all(),
+               }
+    return render(request, 'main/cart.html', context=context)
+
+@login_required
+def staff(request):
+    if (not request.user.is_staff):
+        return redirect('/home')
+    
+    worker, _ = Worker.objects.get_or_create(user=request.user)
+    first_name = worker.first_name
+    last_name = worker.last_name
+    surname = worker.surname
+    email_ = worker.email
+    money = worker.money
+    speciality = worker.speciality
+    expirience = worker.experience
+
+    workers = Worker.objects.all()
+    context = {"first_name": first_name,
+               "last_name": last_name,
+               "email": email_,
+               "money": money,
+               "expirience": expirience,
+               "surname": surname,
+               "spec": speciality,
+               "workers": workers,
+    }
+    return render(request, 'main/staff.html', context=context)
+
+@login_required
+def receipt_add(request):
+    if request.method == 'POST':
+        worker = Worker.objects.get_or_create(user=request.user)[0]
+        receipt = Receipt(image=request.FILES['file'])
+        receipt.worker = worker
+        receipt.save()
+        messages.success(request, 'Фотография успешно загружена')
+        return redirect('/cart')

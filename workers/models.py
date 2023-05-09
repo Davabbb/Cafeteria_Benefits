@@ -44,5 +44,6 @@ class Receipt(models.Model):
         return "Дата добавления %s" % self.date
 
     class Meta:
+        ordering = ['-date']
         verbose_name = 'Чек'
         verbose_name_plural = 'Чеки'

@@ -1,0 +1,172 @@
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static//main/staff.css">
+	<meta charset="UTF-8">
+	<title>PARMA</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    
+    <header>
+        <a href="#">
+            <img src="{% static 'login/image.png' %}">
+        </a>
+    </header>
+
+    <button class="buttonSubmit">
+        <input type="submit" value="Корзина">
+        <a href="/cart">
+            <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
+        </a>
+    </button>
+
+    <button class="buttonSubmit">
+        <input type="submit" value="Льготы">
+        <a href="/home">
+            <ion-icon class="heart" name="heart-outline">Сердце</ion-icon>
+        </a>
+    </button>
+
+    <div class="fiod">
+        <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>
+    </div>
+    <div class="infd">
+        <span class="post">{{ spec }}</span>
+        <span class="experience">{{ experience }}</span>
+    </div>
+    <div class="skin">
+        <ion-icon class="person" name="person-outline"></ion-icon>
+    </div>
+    <div class="balld">
+        <ion-icon class="ballicon" name="wallet-outline">Баллов</ion-icon>
+        <span class="ball">{{ money }}</span>
+    </div>
+
+    <h1 class="textlgota">Поиск</h1>
+    <div class="poisklgota">
+        <ion-icon class="searchicon" name="search-outline"></ion-icon>
+        <input class="searchinput" type="text">
+    </div>
+
+    <button class="reportbtn">
+        <span class="reporttext">Отчёт</span>
+        <ion-icon class="reporticonr" name="log-in-outline"></ion-icon>
+    </button>
+    
+    <button class="plussstaffbtn">
+        <a href="#openModalplus" class="plussstafftext">Добавить сотрудника</a>
+        <ion-icon class="plussicon" name="add-outline"></ion-icon>
+    </button>
+
+    <button class="minusstaffbtn">
+        <a href="#openModalminus" class="minusstafftext">Удалить сотрудника</a>
+        <ion-icon class="minusicon" name="remove-outline"></ion-icon>
+    </button>
+
+    <div class="list">
+        {% for worker in workers %}
+        <div class="staff">
+            <span class="stafffio">{{ worker.last_name }} {{ worker.first_name }} {{ worker.surname }}</span>
+            <div class="staffdiv">
+                <ion-icon class="staffdoc" name="document-outline">Файл</ion-icon>
+            </div>
+            <span class="staffbalance">{{ worker.money }}</span>
+            <button class="sbtn">
+                <a href="#openModaledit" class="staffedit">Редактировать</a>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <!-- HTML модального окна -->
+    <div id="openModalplus" class="modalplus">
+        <a href="#close" title="Close" class="close">×</a>
+
+        <h1 class="plusfio">Фамилия</h1>
+        <div class="plusstaff">
+            <input class="plusstaffinputsoname" type="text">
+        </div>
+
+        <h1 class="plusfio">Имя</h1>
+        <div class="plusstaff">
+            <input class="plusstaffinputname" type="text">
+        </div>
+        
+        <h1 class="plusfio">Отчество</h1>
+        <div class="plusstaff">
+            <input class="plusstaffinputpatronymic" type="text">
+        </div>
+
+        <button class="plusbtn">
+            <input type="submit" value="Добавить">
+        </button>
+    </div>
+
+
+    <div id="openModalminus" class="modalminus">
+        <a href="#close" title="Close" class="close">×</a>
+
+        <h1 class="minusfio">Фамилия</h1>
+        <div class="minusstaff">
+            <input class="minusstaffinputsoname" type="text">
+        </div>
+
+        <h1 class="minusfio">Имя</h1>
+        <div class="minusstaff">
+            <input class="minusstaffinputname" type="text">
+        </div>
+        
+        <h1 class="minusfio">Отчество</h1>
+        <div class="minusstaff">
+            <input class="minusstaffinputpatronymic" type="text">
+        </div>
+
+        <button class="minusbtn">
+            <input type="submit" value="Удалить">
+        </button>
+    </div>
+
+    <div id="openModaledit" class="modaledit">
+        <a href="#close" title="Close" class="close">×</a>
+
+        <h1 class="editfioball">Новая Фамилия</h1>
+        <div class="editstaff">
+            <input class="editstaffinputsoname" type="text">
+        </div>
+
+        <h1 class="editfioball">Новое Имя</h1>
+        <div class="editstaff">
+            <input class="editstaffinputname" type="text">
+        </div>
+        
+        <h1 class="editfioball">Новое Отчество</h1>
+        <div class="editstaff">
+            <input class="editstaffinputpatronymic" type="text">
+        </div>
+
+        <h1 class="editfioball">Начислить Баллов</h1>
+        <div class="editstaff">
+            <input class="editstaffinputball" type="text">
+        </div>
+
+        <button class="editbtn">
+            <input type="submit" value="Изменить">
+        </button>
+    </div>
+    
+    <script src="{% static 'main/staff.js' %}"></script>
+</body>
+</html>
+
+{% endblock %}

@@ -18,14 +18,16 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('home', views.home, name='home'),
     path('', views.shop, name='shop'),
+    path('home', views.shop, name='home'),
     path('user', views.user, name='user'),
+    path('staff', views.staff, name='staff'),
     path('purchase/<int:pk>/', views.product_purchase, name='product_purchase'),
     path('wishlist_add/<int:pk>', views.add_to_wishlist, name='add_to_wishlist'),
     path('wishlist_remove/<int:pk>', views.remove_from_wishlist, name='remove_from_wishlist'),
+    path('receipt/add/', views.receipt_add, name='receipt_add'),
     # path('signup/', views.SignUp.as_view(), name='signup'),
     path('login/', views.login_view, name='login'),
-
     path('shop', views.shop, name='shop'),
+    path('cart', views.cart, name='cart')
 ]

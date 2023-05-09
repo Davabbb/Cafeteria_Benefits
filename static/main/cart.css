@@ -44,23 +44,25 @@ header {
 	border: none;
 }
 
-.staffbtn{
-    position: absolute;
-    top: 349px;
-    left: 1100px;
-    display: flex;
-	width: 419px;
+.historylgotabtn {
+	margin: 0px;
+	position: absolute;
+	top: 506px;
+	left: 1395px;
+	display: flex;
+	justify-content: left;
+	width: 461px;
 	height: 101px;
 	background: #D9D9D9;
-	border-radius: 60px;
+	border-radius: 90px;
 	border-style: solid;
 	border-color: #D9D9D9;
 	border-width:8px;
 }
-.staffbtn:hover {
+.historylgotabtn:hover {
 	border-color:#323E49;
-}
-.staffbtn input {
+ }
+.historylgotabtn input {
 	background: #D9D9D9;
 	font-family: 'Montserrat';
 	line-height: 49px;
@@ -77,21 +79,31 @@ header {
 	letter-spacing: -0.03em;
 	border: none;
 }
-.stafficon{
-	margin-left: 14px;
-	margin-top: 2px;
+.btnfile{
+	background: #D9D9D9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin: 0px;
+	position: absolute;
+	top: 506px;
+	left: 1255px;
+	width: 115px;
+	height: 115px;
+
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+}
+.btnfile:hover{
+	border-color: #323E49;
+}
+.fileicon{
 	width: 80px;
 	height: 80px;
-
 }
-
-.korsina{
-	margin-top: -4px;
-	margin-left: 65px;
-	width: 95px;
-	height: 95px;
-}
-
 .hystorysubmit{
 	background: #D9D9D9;
 	display: flex;
@@ -121,6 +133,12 @@ header {
 }
 .hystorysubmit:hover{
 	border-color: #323E49;
+}
+.heart{
+	margin-top: auto;
+	margin-left: 75px;
+	width: 80px;
+	height: 80px;
 }
 .fiod{
 	position: absolute;
@@ -223,10 +241,10 @@ header {
 	margin-top: 10px;
 	width: 80px;
 	height: 80px;
+    padding: 0px;
 }
 .ball{
 	margin: auto;
-	
 	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: 700;
@@ -418,10 +436,12 @@ header {
 	display: flex;
 	align-items: center;
 	text-align: center;
+    justify-content: center;
 	letter-spacing: -0.02em;
 
 color: #000000;
 }
+
 
 
 .modalhistory {

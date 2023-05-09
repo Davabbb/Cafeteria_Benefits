@@ -1,0 +1,124 @@
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static/main/cart.css">
+	<meta charset="UTF-8">
+	<title>PARMA</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    
+    <header>
+        <a href="#">
+            <img src="{% static 'login/image.png' %}">
+        </a>
+    </header>
+
+    <button class="buttonSubmit">
+        <input type="submit" value="Льготы">
+        <a href="/home">
+            <ion-icon class="heart" name="heart-outline">Сердце</ion-icon>
+        </a>
+    </button>
+
+    <form id="fileUploadForm" method="POST" action="{% url 'receipt_add' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" id="receiptFile">
+        <button type="submit" class="btnfile">
+            <ion-icon class="fileicon" name="document-attach-outline"></ion-icon>
+            Загрузить фото
+        </button>
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+
+    <a href="#openModalhistory" class="hystorysubmit">История покупок</a>
+
+    <div class="fiod">
+        <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>
+    </div>
+    <div class="infd">
+        <span class="post">{{ spec }}</span>
+        <span class="experience">{{ experience }}</span>
+    </div>
+    <div class="skin">
+        <ion-icon class="person" name="person-outline"></ion-icon>
+    </div>
+    <div class="skin">
+        <ion-icon class="person" name="person-outline"></ion-icon>
+    </div>
+    <div class="balld">
+        <ion-icon class="ballicon" name="wallet-outline">Баллов</ion-icon>
+        <span class="ball">{{ money }}</span>
+    </div>
+    <h1 class="textlgota">Поиск льгот</h1>
+    <div class="poisklgota">
+        <ion-icon class="searchicon" name="search-outline"></ion-icon>
+        <input class="searchinput" type="text">
+    </div>
+    <button class="sortbtn">
+        <ion-icon class="sorticonl" name="stats-chart"></ion-icon>
+        <span class="sorttext">Сортировать: по цене </span>
+        <ion-icon class="sorticonr" name="chevron-down-outline"></ion-icon>
+    </button>
+    <button class="spravkabtn">
+        <span class="spravkatext">Справка по получению баллов</span>
+        <ion-icon class="spravkaiconr" name="chevron-down-outline"></ion-icon>
+    </button>
+
+    <div class="list">
+        {% for product in wishlist %}
+            <div class="lgota">
+                <span class="lgotaname">{{ product.name }}</span>
+                <span class="lgotaprice">{{ product.price }}</span>
+                {% if money < product.price %}
+                    <button class="lgotabtn" type="submit" disabled>
+                        <span class="lgotakorsina">Купить</span>
+                    </button>
+                    {% else %}
+                    <button class="lgotabtn" type="submit" form="{{ product.pk }}">
+                        <span class="lgotakorsina">Купить</span>
+                    </button>
+                    {% endif %}
+                <form id="{{ product.pk }}" method="post" action="{% url 'product_purchase' product.pk %}" >
+                    {% csrf_token %}
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <div id="openModalhistory" class="modalhistory">
+        <a href="#close" title="Close" class="close">×</a>
+
+        <div class="historymodaldiv">
+            <h1 class="historymodalh1">История покупок</h1>
+        </div>
+
+        <div class="historymodallist">
+            {% for purchase in purchases %}
+            <div class="buy">
+                <span class="buyname">{{ purchase.product }}</span>
+                <span class="buydate">{{ purchase.date|date:"d/m/y" }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="../../static/main/sort.js"></script>
+    <script src="../../static/main/cart.js"></script>
+</body>
+</html>
+
+{% endblock %}

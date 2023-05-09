@@ -26,19 +26,19 @@
 
     <button class="buttonSubmit">
         <input type="submit" value="Корзина">
-        <a href="{% url 'user' %}">
+        <a href="/cart">
             <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
         </a>
     </button>
 
-
+    <a href="#openModalhistory" class="hystorysubmit">История покупок</a>
 
     <div class="fiod">
         <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>
     </div>
     <div class="infd">
         <span class="post">{{ spec }}</span>
-        <span class="experience">Стаж 1000 лет</span>
+        <span class="experience">{{ experience }}</span>
     </div>
     <div class="skin">
         <ion-icon class="person" name="person-outline"></ion-icon>
@@ -55,7 +55,7 @@
     </div>
     <button class="sortbtn">
         <ion-icon class="sorticonl" name="stats-chart"></ion-icon>
-        <span class="sorttext">Сортировать: по цене </span>
+        <span class="sorttext">Сортировать: по цене</span>
         <ion-icon class="sorticonr" name="chevron-down-outline"></ion-icon>
     </button>
     <button class="spravkabtn">
@@ -64,11 +64,12 @@
     </button>
 
     {% if admin %}
-        <a href="{% url 'user' %}">
-            <h1>Сотрудники</h1>
+        <button class="staffbtn">
+        <input type="submit" value="Сотрудники">
+        <a href="/staff">
+            <ion-icon class="stafficon" name="accessibility-outline">Челик</ion-icon>
         </a>
-    {% else %}
-        <h1>NE ADMIN</h1>
+        </button>
     {% endif %}
 
     <div class="list">
@@ -76,21 +77,40 @@
             <div class="lgota">
                 <span class="lgotaname">{{ product.name }}</span>
                 <span class="lgotaprice">{{ product.price }}</span>
-                <button class="lgotabtn">
-                    <span class="lgotakorsina">
-                        <form method="post" action="{% url 'add_to_wishlist' product.pk %}">
-                          {% csrf_token %}
-                          {% if product in wishlist %}
-                          <input type="submit" value="Добавить" disabled>
-                          {% else %}
-                            <input type="submit" value="Добавить">
-                          {% endif %}
-                        </form>
-                    </span>
-                </button>
+                {% if product in wishlist %}
+                    <button class="lgotabtn" type="submit" disabled>
+                        <span class="lgotakorsina">В корзину</span>
+                    </button>
+                    {% else %}
+                    <button class="lgotabtn" type="submit" form="{{ product.pk }}">
+                        <span class="lgotakorsina">В корзину</span>
+                    </button>
+                    {% endif %}
+                <form id="{{ product.pk }}" method="post" action="{% url 'add_to_wishlist' product.pk %}" >
+                    {% csrf_token %}
+                </form>
             </div>
         {% endfor %}
     </div>
+
+    <div id="openModalhistory" class="modalhistory">
+        <a href="#close" title="Close" class="close">×</a>
+
+        <div class="historymodaldiv">
+            <h1 class="historymodalh1">История покупок</h1>
+        </div>
+
+        <div class="historymodallist">
+            {% for purchase in purchases %}
+            <div class="buy">
+                <span class="buyname">{{ purchase.product }}</span>
+                <span class="buydate">{{ purchase.date|date:"d/m/y" }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="../../static/main/sort.js"></script>
 </body>
 </html>
 
