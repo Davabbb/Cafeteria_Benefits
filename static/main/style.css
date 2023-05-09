@@ -403,6 +403,9 @@ header {
 .lgotabtn:hover{
 	background: #38e30e;
 }
+.lgotabtn:disabled{
+	background: #FF0000;
+}
 .lgotakorsina{
 	margin: auto;
 	width: 231.12px;
