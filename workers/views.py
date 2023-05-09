@@ -110,11 +110,10 @@ def shop(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    expirience = worker.experience
+    expirience = str(worker.experience)
 
     products = Product.objects.all()
     is_admin = request.user.is_superuser
-    print(is_admin)
     purchases = request.user.purchases.all().order_by('-date')
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
 
@@ -130,6 +129,7 @@ def shop(request):
                "purchases": purchases,
                "wishlist": wishlist.products.all(),
                }
+    print(expirience)
     return render(request, 'main/home.html', context=context)
 
 @login_required
@@ -162,7 +162,7 @@ def cart(request):
 
 @login_required
 def staff(request):
-    if (not request.user.is_staff):
+    if not request.user.is_staff:
         return redirect('/home')
     
     worker, _ = Worker.objects.get_or_create(user=request.user)

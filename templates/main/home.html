@@ -24,12 +24,13 @@
     </header>
 
 
-    <button class="buttonSubmit">
-        <input type="submit" value="Корзина">
-        <a href="/cart">
-            <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
-        </a>
-    </button>
+    <a href="/cart">
+        <button class="buttonSubmit">
+            <input type="submit" value="Корзина">
+
+                <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
+        </button>
+    </a>
 
     <a href="#openModalhistory" class="hystorysubmit">История покупок</a>
 
@@ -38,7 +39,7 @@
     </div>
     <div class="infd">
         <span class="post">{{ spec }}</span>
-        <span class="experience">{{ experience }}</span>
+        <span class="experience">стаж {{ expirience }}</span>
     </div>
     <div class="skin">
         <ion-icon class="person" name="person-outline"></ion-icon>
@@ -64,12 +65,14 @@
     </button>
 
     {% if admin %}
-        <button class="staffbtn">
-        <input type="submit" value="Сотрудники">
         <a href="/staff">
-            <ion-icon class="stafficon" name="accessibility-outline">Челик</ion-icon>
+            <button class="staffbtn">
+            <input type="submit" value="Сотрудники">
+
+                <ion-icon class="stafficon" name="accessibility-outline">Челик</ion-icon>
+
+            </button>
         </a>
-        </button>
     {% endif %}
 
     <div class="list">
