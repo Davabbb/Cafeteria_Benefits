@@ -24,12 +24,8 @@ def handler404(request, exception):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('products.urls')),
-    path('', include('orders.urls')),
     path('', include('workers.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('home/', include('workers.urls')),
-    path('home/user', include('workers.urls')),
 ]
 
 

@@ -35,12 +35,13 @@
 
     <form id="fileUploadForm" method="POST" action="{% url 'receipt_add' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="file" id="receiptFile">
-        <button type="submit" class="btnfile">
+        <input type="file" name="file" id="receiptFile" style="display:none;">
+        <button type="button" class="btnfile">
             <ion-icon class="fileicon" name="document-attach-outline"></ion-icon>
-            Загрузить фото
         </button>
+        <button id="submitBtn" style="display:none;"></button>
     </form>
+
     {% if messages %}
     {% for message in messages %}
         <div class="alert alert-success">{{ message }}</div>
