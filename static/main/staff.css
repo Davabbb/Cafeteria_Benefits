@@ -8,6 +8,41 @@ body
 header {
 	background: #EC1C24;
 }
+.exit {
+	position: absolute;
+	top: 5px;
+	left: 1695px;
+	display: flex;
+	justify-content: left;
+	width: 260x;
+	height: 80px;
+	background: #D9D9D9;
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+}
+.exit:hover {
+	border-color:#323E49;
+ }
+.exit input {
+	background: none;
+	font-family: 'Montserrat';
+	border-radius: 90px;
+	margin-top: 10px;
+	color: #000000;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 44px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border: none;
+}
+
 .buttonSubmit {
 	margin: 0px;
 	position: absolute;
@@ -457,10 +492,11 @@ header {
 
 
 
+
 .modalplus {
     position: absolute;
 	width: 835px;
-	height: 940px;
+	height: 1660px;
 	top: 404px;
 	left: 543px ;
 	background: #D9D9D9;
@@ -566,6 +602,45 @@ header {
 	border-bottom: 3px solid #FFFFFF;
 	font-size: 40px;
 }
+.plusstaffinputlogin{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 44px;
+	width: 480px;
+	height: 80px;
+	background:#323E49;
+	color: #FFFFFF;
+	padding: 0px;
+	border: 0px;
+	border-bottom: 3px solid #FFFFFF;
+	font-size: 40px;
+}
+.plusstaffinputpassword{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 44px;
+	width: 480px;
+	height: 80px;
+	background:#323E49;
+	color: #FFFFFF;
+	padding: 0px;
+	border: 0px;
+	border-bottom: 3px solid #FFFFFF;
+	font-size: 40px;
+}
+.plusstaffinputpost{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 44px;
+	width: 480px;
+	height: 80px;
+	background:#323E49;
+	color: #FFFFFF;
+	padding: 0px;
+	border: 0px;
+	border-bottom: 3px solid #FFFFFF;
+	font-size: 40px;
+}
 .plusbtn {
 	position: relative;
 	border-radius: 60px;
@@ -606,7 +681,7 @@ header {
 .modalminus {
     position: absolute;
 	width: 835px;
-	height: 940px;
+	height: 440px;
 	top: 404px;
 	left: 543px ;
 	background: #D9D9D9;
@@ -653,33 +728,7 @@ header {
 	margin-left:134px;
 	margin-top: 10px;
 }
-.minusstaffinputsoname{
-	position: absolute;
-	margin-top: 20px;
-	margin-left: 44px;
-	width: 480px;
-	height: 80px;
-	background:#323E49;
-	color: #FFFFFF;
-	padding: 0px;
-	border: 0px;
-	border-bottom: 3px solid #FFFFFF;
-	font-size: 40px;
-}
-.minusstaffinputname{
-	position: absolute;
-	margin-top: 20px;
-	margin-left: 44px;
-	width: 480px;
-	height: 80px;
-	background:#323E49;
-	color: #FFFFFF;
-	padding: 0px;
-	border: 0px;
-	border-bottom: 3px solid #FFFFFF;
-	font-size: 40px;
-}
-.minusstaffinputpatronymic{
+.minusstaffinputlogin{
 	position: absolute;
 	margin-top: 20px;
 	margin-left: 44px;
@@ -728,7 +777,6 @@ header {
 	text-align: center;
 	border: none;
 }
-
 
 .modaledit {
     position: absolute;

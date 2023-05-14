@@ -21,6 +21,9 @@
         <a href="#">
             <img src="{% static 'login/image.png' %}">
         </a>
+        <button class="exit">
+            <input type="submit" value="Выход">
+        </button>
     </header>
 
     <a href="/cart">
@@ -82,90 +85,106 @@
             </div>
             <span class="staffbalance">{{ worker.money }}</span>
             <button class="sbtn">
-                <a href="#openModaledit" class="staffedit">Редактировать</a>
+                <a href="{% url 'edit_worker' worker.pk %}#openModaledit" class="staffedit">Редактировать</a>
             </button>
+            <form method="POST" action="{% url 'edit_worker' worker.pk %}" id="{{worker.pk}}">
+                {% csrf_token %}
+                <input type="hidden" name="worker_id" value="{{ worker.id }}">
+                <div id="openModaledit" class="modaledit">
+                    <a href="#close" title="Close" class="close">×</a>
+        
+                    <h1 class="editfioball">Новая Фамилия</h1>
+                    <div class="editstaff">
+                        <input class="editstaffinputsoname" type="text" name="new_lastname">
+                    </div>
+        
+                    <h1 class="editfioball">Новое Имя</h1>
+                    <div class="editstaff">
+                        <input class="editstaffinputname" type="text" name="new_firstname">
+                    </div>
+                    
+                    <h1 class="editfioball">Новое Отчество</h1>
+                    <div class="editstaff">
+                        <input class="editstaffinputpatronymic" type="text" name="new_surname">
+                    </div>
+        
+                    <h1 class="editfioball">Начислить Баллов</h1>
+                    <div class="editstaff">
+                        <input class="editstaffinputball" type="text" name="money">
+                    </div>
+        
+                    <button class="editbtn">
+                        <input type="submit" value="Изменить">
+                    </button>
+                </div>
+            </form>
         </div>
         {% endfor %}
     </div>
 
 
     <!-- HTML модального окна -->
-    <div id="openModalplus" class="modalplus">
-        <a href="#close" title="Close" class="close">×</a>
-
-        <h1 class="plusfio">Фамилия</h1>
-        <div class="plusstaff">
-            <input class="plusstaffinputsoname" type="text">
+    <form method="POST" action="{% url 'create_worker' %}">
+        {% csrf_token %}
+    
+        <div id="openModalplus" class="modalplus">
+            <a href="#close" title="Close" class="close">×</a>
+    
+            <h1 class="plusfio">Фамилия</h1>
+            <div class="plusstaff">
+                <input class="plusstaffinputsoname" type="text" name="last_name">
+            </div>
+    
+            <h1 class="plusfio">Имя</h1>
+            <div class="plusstaff">
+                <input class="plusstaffinputname" type="text" name="first_name">
+            </div>
+    
+            <h1 class="plusfio">Отчество</h1>
+            <div class="plusstaff">
+                <input class="plusstaffinputpatronymic" type="text" name="patronymic">
+            </div>
+    
+            <h1 class="plusfio">Должность</h1>
+            <div class="plusstaff">
+                <input class="plusstaffinputpost" type="text" name="position">
+            </div>
+    
+            <h1 class="plusfio">Логин</h1>
+            <div class="plusstaff">
+                <input class="plusstaffinputlogin" type="text" name="username">
+            </div>
+    
+            <h1 class="plusfio">Пароль</h1>
+            <div class="plusstaff">
+                <input class="plusstaffinputpassword" type="password" name="password">
+            </div>
+    
+            <button class="plusbtn">
+                <input type="submit" value="Добавить">
+            </button>
         </div>
+    </form>
 
-        <h1 class="plusfio">Имя</h1>
-        <div class="plusstaff">
-            <input class="plusstaffinputname" type="text">
+
+    <form method="POST" action="{% url 'delete_worker' %}">
+        {% csrf_token %}
+        <div id="openModalminus" class="modalminus">
+            <a href="#close" title="Close" class="close">×</a>
+
+            <h1 class="minusfio">Логин</h1>
+            <div class="minusstaff">
+                <input class="minusstaffinputlogin" type="text" name="username">
+            </div>
+            
+            <button class="minusbtn">
+                <input type="submit" value="Удалить">
+            </button>
         </div>
-        
-        <h1 class="plusfio">Отчество</h1>
-        <div class="plusstaff">
-            <input class="plusstaffinputpatronymic" type="text">
-        </div>
-
-        <button class="plusbtn">
-            <input type="submit" value="Добавить">
-        </button>
-    </div>
-
-
-    <div id="openModalminus" class="modalminus">
-        <a href="#close" title="Close" class="close">×</a>
-
-        <h1 class="minusfio">Фамилия</h1>
-        <div class="minusstaff">
-            <input class="minusstaffinputsoname" type="text">
-        </div>
-
-        <h1 class="minusfio">Имя</h1>
-        <div class="minusstaff">
-            <input class="minusstaffinputname" type="text">
-        </div>
-        
-        <h1 class="minusfio">Отчество</h1>
-        <div class="minusstaff">
-            <input class="minusstaffinputpatronymic" type="text">
-        </div>
-
-        <button class="minusbtn">
-            <input type="submit" value="Удалить">
-        </button>
-    </div>
-
-    <div id="openModaledit" class="modaledit">
-        <a href="#close" title="Close" class="close">×</a>
-
-        <h1 class="editfioball">Новая Фамилия</h1>
-        <div class="editstaff">
-            <input class="editstaffinputsoname" type="text">
-        </div>
-
-        <h1 class="editfioball">Новое Имя</h1>
-        <div class="editstaff">
-            <input class="editstaffinputname" type="text">
-        </div>
-        
-        <h1 class="editfioball">Новое Отчество</h1>
-        <div class="editstaff">
-            <input class="editstaffinputpatronymic" type="text">
-        </div>
-
-        <h1 class="editfioball">Начислить Баллов</h1>
-        <div class="editstaff">
-            <input class="editstaffinputball" type="text">
-        </div>
-
-        <button class="editbtn">
-            <input type="submit" value="Изменить">
-        </button>
-    </div>
+    </form>
     
     <script src="{% static 'main/staff.js' %}"></script>
+    <script src="{% static 'main/logout.js' %}"></script>
 </body>
 </html>
 

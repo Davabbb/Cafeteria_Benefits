@@ -8,6 +8,41 @@ body
 header {
 	background: #EC1C24;
 }
+.exit {
+	position: absolute;
+	top: 5px;
+	left: 1695px;
+	display: flex;
+	justify-content: left;
+	width: 260x;
+	height: 80px;
+	background: #D9D9D9;
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+}
+.exit:hover {
+	border-color:#323E49;
+ }
+.exit input {
+	background: none;
+	font-family: 'Montserrat';
+	border-radius: 90px;
+	margin-top: 10px;
+	color: #000000;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 44px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border: none;
+}
+
 .buttonSubmit {
 	margin: 0px;
 	position: absolute;

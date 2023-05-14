@@ -28,6 +28,9 @@
         <a href="/home">
             <ion-icon class="heart" name="heart-outline">Сердце</ion-icon>
         </a>
+        <button class="exit">
+            <input type="submit" value="Выход">
+        </button>
     </button>
 
     <form id="fileUploadForm" method="POST" action="{% url 'receipt_add' %}" enctype="multipart/form-data">
@@ -116,8 +119,9 @@
             {% endfor %}
         </div>
     </div>
-    <script src="../../static/main/sort.js"></script>
-    <script src="../../static/main/cart.js"></script>
+    <script src="{% static 'main/sort.js' %}"></script>
+    <script src="{% static 'main/cart.js' %}"></script>
+    <script src="{% static 'main/logout.js' %}"></script>
 </body>
 </html>
 

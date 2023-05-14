@@ -1,3 +1,4 @@
+import decimal
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -94,11 +95,16 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('/home')
         else:
             return render(request, 'registration/login.html', {'error_message': 'Ошибка!'})
     else:
         return render(request, 'registration/login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login')        
 
 
 @login_required
@@ -195,3 +201,64 @@ def receipt_add(request):
         receipt.save()
         messages.success(request, 'Фотография успешно загружена')
         return redirect('/cart')
+
+@login_required
+def create_worker(request):
+    if request.method == 'POST':
+        last_name = request.POST.get('last_name')
+        first_name = request.POST.get('first_name')
+        surname = request.POST.get('patronymic')
+        speciality = request.POST.get('position')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if User.objects.filter(username=username).exists():
+            return redirect('/staff')
+
+        new_user = User.objects.create_user(
+            username=username,
+            password=password,
+        )
+        new_user.save()
+
+        worker, _ = Worker.objects.get_or_create(user=new_user)
+        worker.first_name = first_name
+        worker.last_name = last_name
+        worker.surname = surname
+        worker.speciality = speciality
+        worker.save()
+
+    return redirect('/staff')
+    
+@login_required
+def delete_worker(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+
+        if User.objects.filter(username=username).exists():
+            user = User.objects.get(username=username)
+            user.delete()
+
+    return redirect('/staff')
+
+@login_required
+def edit_worker(request, pk):
+    if request.method == 'POST':
+        worker = get_object_or_404(Worker, pk=pk)
+        new_firstname = request.POST.get('new_firstname')
+        new_lastname = request.POST.get('new_lastname')
+        new_surname = request.POST.get('new_surname')
+        money_added = request.POST.get('money')
+
+        if new_firstname != "":
+            worker.first_name = new_firstname
+        if new_lastname != "":
+            worker.last_name = new_lastname
+        if new_surname != "":
+            worker.surname = new_surname
+        if money_added != "":
+            worker.money += decimal.Decimal(money_added)
+        worker.save()
+
+    return redirect('/staff')
+        
