@@ -35,3 +35,11 @@ searchInput.addEventListener('input', function() {
     }
   });
 });
+
+var editButtons = document.querySelectorAll('.staffedit');
+editButtons.forEach(function (button) {
+  button.addEventListener('click', function (event) {
+      var workerId = event.target.getAttribute('data-id');
+      document.getElementById('worker_id').value = workerId;
+  });
+});

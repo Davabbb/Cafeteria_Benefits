@@ -242,13 +242,14 @@ def delete_worker(request):
     return redirect('/staff')
 
 @login_required
-def edit_worker(request, pk):
+def edit_worker(request):
     if request.method == 'POST':
-        worker = get_object_or_404(Worker, pk=pk)
         new_firstname = request.POST.get('new_firstname')
         new_lastname = request.POST.get('new_lastname')
         new_surname = request.POST.get('new_surname')
         money_added = request.POST.get('money')
+        pk = request.POST.get('worker_id')
+        worker = get_object_or_404(Worker, pk=pk)
 
         if new_firstname != "":
             worker.first_name = new_firstname

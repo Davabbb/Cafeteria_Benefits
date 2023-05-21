@@ -85,43 +85,42 @@
             </div>
             <span class="staffbalance">{{ worker.money }}</span>
             <button class="sbtn">
-                <a href="{% url 'edit_worker' worker.pk %}#openModaledit" class="staffedit">Редактировать</a>
+                <a href="#openModaledit" class="staffedit" data-id="{{worker.pk}}">Редактировать</a>
             </button>
-            <form method="POST" action="{% url 'edit_worker' worker.pk %}" id="{{worker.pk}}">
-                {% csrf_token %}
-                <input type="hidden" name="worker_id" value="{{ worker.id }}">
-                <div id="openModaledit" class="modaledit">
-                    <a href="#close" title="Close" class="close">×</a>
-        
-                    <h1 class="editfioball">Новая Фамилия</h1>
-                    <div class="editstaff">
-                        <input class="editstaffinputsoname" type="text" name="new_lastname">
-                    </div>
-        
-                    <h1 class="editfioball">Новое Имя</h1>
-                    <div class="editstaff">
-                        <input class="editstaffinputname" type="text" name="new_firstname">
-                    </div>
-                    
-                    <h1 class="editfioball">Новое Отчество</h1>
-                    <div class="editstaff">
-                        <input class="editstaffinputpatronymic" type="text" name="new_surname">
-                    </div>
-        
-                    <h1 class="editfioball">Начислить Баллов</h1>
-                    <div class="editstaff">
-                        <input class="editstaffinputball" type="text" name="money">
-                    </div>
-        
-                    <button class="editbtn">
-                        <input type="submit" value="Изменить">
-                    </button>
-                </div>
-            </form>
         </div>
         {% endfor %}
     </div>
 
+    <div id="openModaledit" class="modaledit">
+        <a href="#close" title="Close" class="close">×</a>
+        <form method="post" action="{% url 'edit_worker' %}">
+            {% csrf_token %}
+            <input type="hidden" id="worker_id" name="worker_id" value="">
+            <h1 class="editfioball">Новая Фамилия</h1>
+            <div class="editstaff">
+                <input class="editstaffinputsoname" type="text" name="new_lastname">
+            </div>
+
+            <h1 class="editfioball">Новое Имя</h1>
+            <div class="editstaff">
+                <input class="editstaffinputname" type="text" name="new_firstname">
+            </div>
+            
+            <h1 class="editfioball">Новое Отчество</h1>
+            <div class="editstaff">
+                <input class="editstaffinputpatronymic" type="text" name="new_surname">
+            </div>
+
+            <h1 class="editfioball">Начислить Баллов</h1>
+            <div class="editstaff">
+                <input class="editstaffinputball" type="text" name="money">
+            </div>
+
+            <button class="editbtn">
+                <input type="submit" value="Изменить">
+            </button>
+        </form>
+    </div>
 
     <!-- HTML модального окна -->
     <form method="POST" action="{% url 'create_worker' %}">
