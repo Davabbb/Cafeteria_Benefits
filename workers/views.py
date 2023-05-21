@@ -119,7 +119,7 @@ def shop(request):
     expirience = str(worker.experience)
 
     products = Product.objects.all()
-    is_admin = request.user.is_superuser
+    is_admin = request.user.is_staff
     purchases = request.user.purchases.all().order_by('-date')
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
 
@@ -150,10 +150,12 @@ def cart(request):
     expirience = worker.experience
 
     products = Product.objects.all()
+    is_admin = request.user.is_staff
     purchases = request.user.purchases.all().order_by('-date')
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
 
-    context = {"first_name": first_name,
+    context = {"admin": is_admin,
+               "first_name": first_name,
                "last_name": last_name,
                "email": email_,
                "money": money,

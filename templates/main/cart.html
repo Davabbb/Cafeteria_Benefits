@@ -21,17 +21,28 @@
         <a href="#">
             <img src="{% static 'login/image.png' %}">
         </a>
-    </header>
-
-    <button class="buttonSubmit">
-        <input type="submit" value="Льготы">
-        <a href="/home">
-            <ion-icon class="heart" name="heart-outline">Сердце</ion-icon>
-        </a>
         <button class="exit">
             <input type="submit" value="Выход">
         </button>
-    </button>
+    </header>
+
+    <a href="/home">
+        <button class="homebtn">
+            <input type="submit" value="Льготы">
+                <ion-icon class="heart" name="heart-outline">Сердце</ion-icon>
+        </button>
+    </a>
+
+    {% if admin %}
+        <a href="/staff">
+            <button class="staffbtn">
+            <input type="submit" value="Сотрудники">
+
+                <ion-icon class="stafficon" name="accessibility-outline">Челик</ion-icon>
+
+            </button>
+        </a>
+    {% endif %}
 
     <form id="fileUploadForm" method="POST" action="{% url 'receipt_add' %}" enctype="multipart/form-data">
         {% csrf_token %}
@@ -85,7 +96,7 @@
     <div class="list">
         {% for product in wishlist %}
             <div class="lgota">
-                <span class="lgotaname">{{ product.name }}</span>
+                <span class="lgotaname" title="{{ product.description }}">{{ product.name }}</span>
                 <span class="lgotaprice">{{ product.price }}</span>
                 {% if money < product.price %}
                     <button class="lgotabtn" type="submit" disabled>

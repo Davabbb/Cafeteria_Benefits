@@ -16,7 +16,6 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    
     <header>
         <a href="#">
             <img src="{% static 'login/image.png' %}">
@@ -27,18 +26,18 @@
     </header>
 
     <a href="/cart">
-        <button class="buttonSubmit">
+        <button class="cartbtn">
             <input type="submit" value="Корзина">
                 <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
         </button>
     </a>
 
-    <button class="buttonSubmit">
-        <input type="submit" value="Льготы">
-        <a href="/home">
-            <ion-icon class="heart" name="heart-outline">Сердце</ion-icon>
-        </a>
-    </button>
+    <a href="/home">
+        <button class="homebtn">
+            <input type="submit" value="Льготы">
+                <ion-icon class="heart" name="heart-outline">Сердце</ion-icon>
+        </button>
+    </a>
 
     <div class="fiod">
         <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>

@@ -28,12 +28,22 @@
 
 
     <a href="/cart">
-        <button class="buttonSubmit">
+        <button class="cartbtn">
             <input type="submit" value="Корзина">
-
                 <ion-icon class="korsina" name="cart-outline">Корзина</ion-icon>
         </button>
     </a>
+
+    {% if admin %}
+        <a href="/staff">
+            <button class="staffbtn">
+            <input type="submit" value="Сотрудники">
+
+                <ion-icon class="stafficon" name="accessibility-outline">Челик</ion-icon>
+
+            </button>
+        </a>
+    {% endif %}
 
     <a href="#openModalhistory" class="hystorysubmit">История покупок</a>
 
@@ -67,21 +77,10 @@
         <ion-icon class="spravkaiconr" name="chevron-down-outline"></ion-icon>
     </button>
 
-    {% if admin %}
-        <a href="/staff">
-            <button class="staffbtn">
-            <input type="submit" value="Сотрудники">
-
-                <ion-icon class="stafficon" name="accessibility-outline">Челик</ion-icon>
-
-            </button>
-        </a>
-    {% endif %}
-
     <div class="list">
         {% for product in products %}
             <div class="lgota">
-                <span class="lgotaname">{{ product.name }}</span>
+                <span class="lgotaname" title="{{ product.description }}">{{ product.name }}</span>
                 <span class="lgotaprice">{{ product.price }}</span>
                 {% if product in wishlist %}
                     <button class="lgotabtn" type="submit" disabled>
