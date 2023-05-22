@@ -264,4 +264,33 @@ def edit_worker(request):
         worker.save()
 
     return redirect('/staff')
+
+@login_required
+def create_product(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        description = request.POST.get('description')
+
+        if Product.objects.filter(name=name).exists():
+            return redirect('/staff')
         
+        new_product = Product.objects.create(
+            name=name,
+            price=price,
+            description=description
+        )
+        new_product.save()
+
+    return redirect('/staff')
+
+@login_required
+def delete_product(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+
+        if Product.objects.filter(name=name).exists():
+            product = Product.objects.get(name=name)
+            product.delete()
+            
+    return redirect('/staff')

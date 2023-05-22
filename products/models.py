@@ -11,6 +11,11 @@ class Product(models.Model):
     def __str__(self):
         return "%s" % self.name
 
+    def delete(self, *args, **kwargs):
+        for w in self.wishlists.all():
+            w.products.remove(self)
+        super(Product, self).delete(*args, **kwargs)
+
     class Meta:
         verbose_name = 'Льгота'
         verbose_name_plural = 'Льготы'
@@ -18,7 +23,7 @@ class Product(models.Model):
 
 class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchases')
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING, related_name='purchases')
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
