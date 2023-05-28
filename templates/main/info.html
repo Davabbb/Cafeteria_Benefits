@@ -1,7 +1,9 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="inparma.css">
+    <link rel="stylesheet" type="text/css" href="../../static/main/info.css">
 	<meta charset="UTF-8">
 	<title>PARMA</title>
 
@@ -15,12 +17,15 @@
 <body>
     <header>
         <a href="#">
-            <img src="image.png">
+            <img src="{% static 'login/image.png' %}">
         </a>
-        <button class="btnin">
-            <input type="submit" value="Войти">
-            <ion-icon class="inicon" name="person-circle-outline"></ion-icon>
-        </button>
+
+        <a href="/login">
+            <button class="btnin">
+                <input type="submit" value="Войти">
+                <ion-icon class="inicon" name="person-circle-outline"></ion-icon>
+            </button>
+        </a>
     </header>
 
     <div class="osn">
@@ -43,10 +48,13 @@
         <div class="name">
             <span class="namespan">Кафетерий льгот</span>
         </div>
-            
-        <button class="btninfk">
+
+        <a href="https://www.parma.ru">
+            <button class="btninfk">
             <span class="inf">Информация о компании</span>
-        </button>
+            </button>
+        </a>
+
 
         <button class="btninfs">
             <span class="inf">Информация для сотрудников</span>
@@ -56,8 +64,6 @@
             <span class="inf">Информация для Администратора</span>
         </button>
 
-
     </div>
-
 </body>
 </html>

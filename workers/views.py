@@ -88,20 +88,6 @@ class SignUp(CreateView):
     template_name = "registration/login.html"
 
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('/home')
-        else:
-            return render(request, 'registration/login.html', {'error_message': 'Ошибка!'})
-    else:
-        return render(request, 'registration/login.html')
-
-
 def logout_view(request):
     logout(request)
     return redirect('/login')
@@ -310,3 +296,24 @@ def delete_product(request):
             product.delete()
 
     return redirect('/home')
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/home')
+        else:
+            return render(request, 'registration/login.html', {'error_message': 'Ошибка!'})
+    else:
+        return render(request, 'registration/login.html')
+
+
+def info(request):
+    if request.user.is_authenticated:
+        return redirect('/home')
+    return render(request, 'main/info.html')
+
