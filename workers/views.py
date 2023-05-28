@@ -1,7 +1,7 @@
 import decimal
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -11,6 +11,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
 from products.models import *
+from django.http import HttpResponse
+from django.utils.encoding import smart_str
+import io
+from openpyxl import Workbook
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
@@ -319,4 +323,32 @@ def info(request):
     if request.user.is_authenticated:
         return redirect('/home')
     return render(request, 'main/info.html')
+
+@login_required
+def report(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden('У вас нетт доступа к этой странице.')
+    products = Product.objects.all()
+    output = io.BytesIO()
+    workbook = Workbook()
+    worksheet = workbook.active
+    worksheet.title = 'Report'
+    worksheet['A1'] = 'Product Name'
+    worksheet['B1'] = 'Total Purchases'
+    row = 2
+    for product in products:
+        purchase_count = Purchase.objects.filter(product=product).count()
+        worksheet.cell(row, 1, smart_str(product.name))
+        worksheet.cell(row, 2, purchase_count)
+        row += 1
+    workbook.save(output)
+    
+    response = HttpResponse(content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=report.xlsx'
+    response.write(output.getvalue())
+    
+    output.seek(0) # Add this line to buffer the file
+    response.write(output.read()) # Add this line to write the buffered file
+    
+    return response
 

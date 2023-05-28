@@ -42,3 +42,22 @@ editButtons.forEach(function (button) {
       document.getElementById('worker_id').value = workerId;
   });
 });
+
+$(document).ready(function(){
+  $('.reportbtn').click(function(){
+      $.ajax({
+          url: '/report/',
+          type: 'GET',
+          success: function(data){
+              var blob = new Blob([data]);
+              var link = document.createElement('a');
+              link.href = window.URL.createObjectURL(blob);
+              link.download = 'report.xlsx';
+              link.click();
+          },
+          error: function(jqXHR, textStatus, errorThrown){
+              alert(textStatus);
+          }
+      });
+  });
+});
