@@ -104,7 +104,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/login')        
+    return redirect('/login')
 
 
 @login_required
@@ -138,6 +138,7 @@ def shop(request):
     print(expirience)
     return render(request, 'main/home.html', context=context)
 
+
 @login_required
 def cart(request):
     worker, _ = Worker.objects.get_or_create(user=request.user)
@@ -168,11 +169,12 @@ def cart(request):
                }
     return render(request, 'main/cart.html', context=context)
 
+
 @login_required
 def staff(request):
     if not request.user.is_staff:
         return redirect('/home')
-    
+
     worker, _ = Worker.objects.get_or_create(user=request.user)
     first_name = worker.first_name
     last_name = worker.last_name
@@ -181,8 +183,8 @@ def staff(request):
     money = worker.money
     speciality = worker.speciality
     expirience = worker.experience
-
     workers = Worker.objects.all()
+
     context = {"first_name": first_name,
                "last_name": last_name,
                "email": email_,
@@ -191,8 +193,9 @@ def staff(request):
                "surname": surname,
                "spec": speciality,
                "workers": workers,
-    }
+               }
     return render(request, 'main/staff.html', context=context)
+
 
 @login_required
 def receipt_add(request):
@@ -203,6 +206,7 @@ def receipt_add(request):
         receipt.save()
         messages.success(request, 'Фотография успешно загружена')
         return redirect('/cart')
+
 
 @login_required
 def create_worker(request):
@@ -231,7 +235,8 @@ def create_worker(request):
         worker.save()
 
     return redirect('/staff')
-    
+
+
 @login_required
 def delete_worker(request):
     if request.method == 'POST':
@@ -242,6 +247,7 @@ def delete_worker(request):
             user.delete()
 
     return redirect('/staff')
+
 
 @login_required
 def edit_worker(request):
@@ -265,6 +271,7 @@ def edit_worker(request):
 
     return redirect('/staff')
 
+
 @login_required
 def create_product(request):
     if request.method == "POST":
@@ -274,7 +281,7 @@ def create_product(request):
 
         if Product.objects.filter(name=name).exists():
             return redirect('/staff')
-        
+
         new_product = Product.objects.create(
             name=name,
             price=price,
@@ -284,6 +291,7 @@ def create_product(request):
 
     return redirect('/staff')
 
+
 @login_required
 def delete_product(request):
     if request.method == 'POST':
@@ -292,5 +300,5 @@ def delete_product(request):
         if Product.objects.filter(name=name).exists():
             product = Product.objects.get(name=name)
             product.delete()
-            
+
     return redirect('/staff')

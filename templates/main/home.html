@@ -70,7 +70,6 @@
     <button class="sortbtn">
         <ion-icon class="sorticonl" name="stats-chart"></ion-icon>
         <span class="sorttext">Сортировать: по цене</span>
-        <ion-icon class="sorticonr" name="chevron-down-outline"></ion-icon>
     </button>
     <button class="spravkabtn">
         <span class="spravkatext">Справка по получению баллов</span>
@@ -114,6 +113,30 @@
             {% endfor %}
         </div>
     </div>
+
+    {% if admin %}
+        <button class="pluslgota">
+            <a href="#openModalplus" class="pluslgotatext">Добавить льготу</a>
+        </button>
+    {% endif %}
+
+    <div id="openModalplus" class="modalplus">
+        <a href="#close" title="Close" class="close">×</a>
+
+        <h1 class="pluslgotamodal">Название льготы</h1>
+        <div class="pluslgotainput">
+            <input class="pluslgotaname" type="text">
+        </div>
+        <h1 class="pluslgotamodal">Цена льготы</h1>
+        <div class="pluslgotainput">
+            <input class="pluslgotamoney" type="text">
+        </div>
+
+        <button class="plusbtn">
+            <input type="submit" value="Добавить">
+        </button>
+    </div>
+
 
     <script src="{% static 'main/sort.js' %}"></script>
     <script src="{% static 'main/logout.js' %}"></script>

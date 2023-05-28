@@ -78,13 +78,13 @@
     <div class="list">
         {% for worker in workers %}
         <div class="staff">
-            <span class="stafffio">{{ worker.last_name }} {{ worker.first_name }} {{ worker.surname }}</span>
+            <span class="stafffio">{{ worker.last_name }} {{ worker.first_name }} {{ worker.surname }} {{ worker.user }}</span>
             <div class="staffdiv">
                 <ion-icon class="staffdoc" name="document-outline">Файл</ion-icon>
             </div>
             <span class="staffbalance">{{ worker.money }}</span>
             <button class="sbtn">
-                <a href="#openModaledit" class="staffedit" data-id="{{worker.pk}}">Редактировать</a>
+                <a href="#openModaledit" class="staffedit" data-id="{{ worker.pk }}">Редактировать</a>
             </button>
         </div>
         {% endfor %}
@@ -108,6 +108,16 @@
             <h1 class="editfioball">Новое Отчество</h1>
             <div class="editstaff">
                 <input class="editstaffinputpatronymic" type="text" name="new_surname">
+            </div>
+
+            <h1 class="editfioball">Новая Должность</h1>
+            <div class="editstaff">
+                <input class="editstaffinputdolznost" type="text">
+            </div>
+
+            <h1 class="editfioball">Новый Стаж</h1>
+            <div class="editstaff">
+                <input class="editstaffinputstaz" type="text">
             </div>
 
             <h1 class="editfioball">Начислить Баллов</h1>
@@ -141,6 +151,11 @@
             <h1 class="plusfio">Отчество</h1>
             <div class="plusstaff">
                 <input class="plusstaffinputpatronymic" type="text" name="patronymic">
+            </div>
+
+            <h1 class="plusfio">Стаж</h1>
+            <div class="plusstaff">
+                <input class="plusstaffinputstaz" type="text">
             </div>
     
             <h1 class="plusfio">Должность</h1>
