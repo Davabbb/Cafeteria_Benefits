@@ -746,3 +746,25 @@ color: #000000;
 
 	color: #000000;
 }
+.lgotadelete {
+    position: relative;
+    left: 1230px;
+    top: -6px;
+    width: 80px;
+    height: 126px;
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    background: none;
+    border: none;
+    color: #d11515;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.lgotadelete:hover{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
+}

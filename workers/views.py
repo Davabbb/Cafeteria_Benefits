@@ -105,7 +105,7 @@ def shop(request):
     experience = str(worker.experience)
     
 
-    products = Product.objects.all().order_by('price')
+    products = Product.objects.filter(is_active=True).order_by('price')
     is_admin = request.user.is_staff
     purchases = request.user.purchases.all().order_by('-date')
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
@@ -136,7 +136,7 @@ def cart(request):
     speciality = worker.speciality
     experience = worker.experience
 
-    products = Product.objects.all().order_by('price')
+    products = Product.objects.filter(is_active=True).order_by('price')
     is_admin = request.user.is_staff
     purchases = request.user.purchases.all().order_by('-date')
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
@@ -290,14 +290,14 @@ def create_product(request):
 
 
 @login_required
-def delete_product(request):
+def delete_product(request, pk):
     if request.method == 'POST':
-        name = request.POST.get('name')
-
-        if Product.objects.filter(name=name).exists():
-            product = Product.objects.get(name=name)
-            product.delete()
-
+        product = get_object_or_404(Product, pk=pk)
+        for user in User.objects.all():
+            wishlist, _ = Wishlist.objects.get_or_create(user=user)
+            wishlist.products.remove(product)
+        product.is_active = False
+        product.save()
     return redirect('/home')
 
 

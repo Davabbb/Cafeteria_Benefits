@@ -81,16 +81,24 @@
             <div class="lgota">
                 <span class="lgotaname" title="{{ product.description }}">{{ product.name }}</span>
                 <span class="lgotaprice">{{ product.price }}</span>
+                {% if admin %}
+                <button class="lgotadelete" type="submit" form="delete{{ product.pk }}">
+                    <span>×</span>
+                </button>
+                <form id="delete{{ product.pk }}" method="post" action="{% url 'delete_product' product.pk %}" hidden="true">
+                    {% csrf_token %}
+                </form>
+                {% endif %}
                 {% if product in wishlist %}
                     <button class="lgotabtn" type="submit" disabled>
                         <span class="lgotakorsina">В корзину</span>
                     </button>
                     {% else %}
-                    <button class="lgotabtn" type="submit" form="{{ product.pk }}">
+                    <button class="lgotabtn" type="submit" form="add{{ product.pk }}">
                         <span class="lgotakorsina">В корзину</span>
                     </button>
                     {% endif %}
-                <form id="{{ product.pk }}" method="post" action="{% url 'add_to_wishlist' product.pk %}" >
+                <form id="add{{ product.pk }}" method="post" action="{% url 'add_to_wishlist' product.pk %}" hidden="true">
                     {% csrf_token %}
                 </form>
             </div>

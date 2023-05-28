@@ -11,11 +11,6 @@ class Product(models.Model):
     def __str__(self):
         return "%s" % self.name
 
-    def delete(self, *args, **kwargs):
-        for w in self.wishlists.all():
-            w.products.remove(self)
-        super(Product, self).delete(*args, **kwargs)
-
     class Meta:
         verbose_name = 'Льгота'
         verbose_name_plural = 'Льготы'
