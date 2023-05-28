@@ -43,7 +43,7 @@ header {
 	font-style: normal;
 	font-weight: 400;
 	font-size: 32px;
-	line-height: 39px;
+	line-height: 39px;	
 	color: #FFFFFF;
 	position: static;
 	width: 184px;
@@ -129,7 +129,7 @@ header {
     opacity: 0.75;
 }
 .modalplus {
-
+ 
 	margin: auto;
 	position: absolute;
 	top: 282px;
@@ -141,7 +141,7 @@ header {
 
     z-index: 1050;
     opacity: 0; /* по умолчанию модальное окно прозрачно */
-    -webkit-transition: opacity 200ms ease-in;
+    -webkit-transition: opacity 200ms ease-in; 
     -moz-transition: opacity 200ms ease-in;
     transition: opacity 200ms ease-in; /* анимация перехода */
     pointer-events: none; /* элемент невидим для событий мыши */
