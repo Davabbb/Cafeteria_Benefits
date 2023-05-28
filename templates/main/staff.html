@@ -112,12 +112,12 @@
 
             <h1 class="editfioball">Новая Должность</h1>
             <div class="editstaff">
-                <input class="editstaffinputdolznost" type="text">
+                <input class="editstaffinputdolznost" type="text" name="new_speciality">
             </div>
 
             <h1 class="editfioball">Новый Стаж</h1>
             <div class="editstaff">
-                <input class="editstaffinputstaz" type="text">
+                <input class="editstaffinputstaz" type="text" name="new_experience">
             </div>
 
             <h1 class="editfioball">Начислить Баллов</h1>
@@ -134,45 +134,36 @@
     <!-- HTML модального окна -->
     <form method="POST" action="{% url 'create_worker' %}">
         {% csrf_token %}
-    
         <div id="openModalplus" class="modalplus">
             <a href="#close" title="Close" class="close">×</a>
-    
             <h1 class="plusfio">Фамилия</h1>
             <div class="plusstaff">
                 <input class="plusstaffinputsoname" type="text" name="last_name">
             </div>
-    
             <h1 class="plusfio">Имя</h1>
             <div class="plusstaff">
                 <input class="plusstaffinputname" type="text" name="first_name">
             </div>
-    
             <h1 class="plusfio">Отчество</h1>
             <div class="plusstaff">
                 <input class="plusstaffinputpatronymic" type="text" name="patronymic">
             </div>
-
             <h1 class="plusfio">Стаж</h1>
             <div class="plusstaff">
-                <input class="plusstaffinputstaz" type="text">
+                <input class="plusstaffinputstaz" type="text" name="experience">
             </div>
-    
             <h1 class="plusfio">Должность</h1>
             <div class="plusstaff">
-                <input class="plusstaffinputpost" type="text" name="position">
+                <input class="plusstaffinputpost" type="text" name="speciality">
             </div>
-    
             <h1 class="plusfio">Логин</h1>
             <div class="plusstaff">
                 <input class="plusstaffinputlogin" type="text" name="username">
             </div>
-    
             <h1 class="plusfio">Пароль</h1>
             <div class="plusstaff">
                 <input class="plusstaffinputpassword" type="password" name="password">
             </div>
-    
             <button class="plusbtn">
                 <input type="submit" value="Добавить">
             </button>
@@ -184,12 +175,10 @@
         {% csrf_token %}
         <div id="openModalminus" class="modalminus">
             <a href="#close" title="Close" class="close">×</a>
-
             <h1 class="minusfio">Логин</h1>
             <div class="minusstaff">
                 <input class="minusstaffinputlogin" type="text" name="username">
             </div>
-            
             <button class="minusbtn">
                 <input type="submit" value="Удалить">
             </button>

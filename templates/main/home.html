@@ -52,7 +52,7 @@
     </div>
     <div class="infd">
         <span class="post">{{ spec }}</span>
-        <span class="experience">стаж {{ expirience }}</span>
+        <span class="experience">{{ experience }}</span>
     </div>
     <div class="skin">
         <ion-icon class="person" name="person-outline"></ion-icon>
@@ -118,24 +118,29 @@
         <button class="pluslgota">
             <a href="#openModalplus" class="pluslgotatext">Добавить льготу</a>
         </button>
+        <form method="POST" action="{% url 'create_product' %}">
+            {% csrf_token %}
+            <div id="openModalplus" class="modalplus">
+                <a href="#close" title="Close" class="close">×</a>
+                <h1 class="pluslgotamodal">Название льготы</h1>
+                <div class="pluslgotainput">
+                    <input class="pluslgotaname" type="text" name="name">
+                </div>
+                <h1 class="pluslgotamodal">Цена льготы</h1>
+                <div class="pluslgotainput">
+                    <input class="pluslgotamoney" type="text" name="price">
+                </div>
+                <h1 class="pluslgotamodal">Описание</h1>
+                <div class="pluslgotainput">
+                    <input class="pluslgotamoney" type="text" name="description">
+                </div>
+                <button class="plusbtn">
+                    <input type="submit" value="Добавить">
+                </button>
+            </div>
+        </form>
+        
     {% endif %}
-
-    <div id="openModalplus" class="modalplus">
-        <a href="#close" title="Close" class="close">×</a>
-
-        <h1 class="pluslgotamodal">Название льготы</h1>
-        <div class="pluslgotainput">
-            <input class="pluslgotaname" type="text">
-        </div>
-        <h1 class="pluslgotamodal">Цена льготы</h1>
-        <div class="pluslgotainput">
-            <input class="pluslgotamoney" type="text">
-        </div>
-
-        <button class="plusbtn">
-            <input type="submit" value="Добавить">
-        </button>
-    </div>
 
 
     <script src="{% static 'main/sort.js' %}"></script>

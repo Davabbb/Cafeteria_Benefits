@@ -14,7 +14,7 @@ plusBtn.addEventListener('click', function() {
           console.log('Ошибка! Сообщение: ' + xhr.statusText);
       }
   };
-  xhr.send(JSON.stringify({'surname': surname, 'name': name, 'patronymic': patronymic}));
+  xhr.send(JSON.stringify({'surname': surname, 'name': name, 'patronymic': patronymic, 'expirience': expirience, 'speciality': speciality}));
 });
 
 const searchInput = document.querySelector('.searchinput');
@@ -24,7 +24,6 @@ searchInput.addEventListener('input', function() {
   const searchQuery = searchInput.value;
   const staff = staffList.querySelectorAll('.staff');
 
-  // проходим по всем работникам и проверяем, соответствует ли хотя бы один работник запросу
   staff.forEach(function(worker) {
     const workerName = worker.querySelector('.stafffio').textContent;
     const isMatch = workerName.toLowerCase().includes(searchQuery.toLowerCase());

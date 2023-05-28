@@ -117,6 +117,7 @@ def shop(request):
     money = worker.money
     speciality = worker.speciality
     expirience = str(worker.experience)
+    
 
     products = Product.objects.all()
     is_admin = request.user.is_staff
@@ -214,7 +215,8 @@ def create_worker(request):
         last_name = request.POST.get('last_name')
         first_name = request.POST.get('first_name')
         surname = request.POST.get('patronymic')
-        speciality = request.POST.get('position')
+        speciality = request.POST.get('speciality')
+        expirience = request.POST.get('expirience')
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -232,6 +234,7 @@ def create_worker(request):
         worker.last_name = last_name
         worker.surname = surname
         worker.speciality = speciality
+        worker.experience = expirience
         worker.save()
 
     return redirect('/staff')
@@ -255,6 +258,8 @@ def edit_worker(request):
         new_firstname = request.POST.get('new_firstname')
         new_lastname = request.POST.get('new_lastname')
         new_surname = request.POST.get('new_surname')
+        new_speciality = request.POST.get('new_speciality')
+        new_experience = request.POST.get('new_experience')
         money_added = request.POST.get('money')
         pk = request.POST.get('worker_id')
         worker = get_object_or_404(Worker, pk=pk)
@@ -265,6 +270,10 @@ def edit_worker(request):
             worker.last_name = new_lastname
         if new_surname != "":
             worker.surname = new_surname
+        if new_speciality != "":
+            worker.speciality = new_speciality
+        if new_experience != "":
+            worker.experience = new_experience
         if money_added != "":
             worker.money += decimal.Decimal(money_added)
         worker.save()
@@ -289,7 +298,7 @@ def create_product(request):
         )
         new_product.save()
 
-    return redirect('/staff')
+    return redirect('/home')
 
 
 @login_required
@@ -301,4 +310,4 @@ def delete_product(request):
             product = Product.objects.get(name=name)
             product.delete()
 
-    return redirect('/staff')
+    return redirect('/home')
