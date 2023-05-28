@@ -105,7 +105,7 @@ def shop(request):
     experience = str(worker.experience)
     
 
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('price')
     is_admin = request.user.is_staff
     purchases = request.user.purchases.all().order_by('-date')
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
@@ -136,7 +136,7 @@ def cart(request):
     speciality = worker.speciality
     experience = worker.experience
 
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('price')
     is_admin = request.user.is_staff
     purchases = request.user.purchases.all().order_by('-date')
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)

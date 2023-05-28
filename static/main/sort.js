@@ -4,8 +4,8 @@ const list = document.querySelector(".list");
 sortBtn.addEventListener("click", function() {
   const sortText = document.querySelector(".sorttext");
 
-  if (sortText.textContent === "Сортировать: по цене") {
-    sortText.textContent = "Сортировать: по имени";
+  if (sortText.textContent === "Сортировать: по имени") {
+    sortText.textContent = "Сортировать: по цене";
     const sortedList = Array.from(list.children).sort(function(a, b){
         var priceA = parseInt(a.querySelector(".lgotaprice").textContent);
         var priceB = parseInt(b.querySelector(".lgotaprice").textContent);
@@ -22,7 +22,7 @@ sortBtn.addEventListener("click", function() {
       list.appendChild(lgota);
     });
   } else {
-    sortText.textContent = "Сортировать: по цене";
+    sortText.textContent = "Сортировать: по имени";
     const sortedList = Array.from(list.children).sort(function(a, b){
         var nameA = a.querySelector(".lgotaname").textContent.toLowerCase();
         var nameB = b.querySelector(".lgotaname").textContent.toLowerCase();
