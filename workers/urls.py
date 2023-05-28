@@ -31,7 +31,6 @@ urlpatterns = [
     path('edit_worker', views.edit_worker, name='edit_worker'),
     path('create_product', views.create_product, name='create_product'),
     path('delete_product', views.delete_product, name='delete_product'),
-    # path('signup/', views.SignUp.as_view(), name='signup'),
     path('logout/', views.logout_view, name='logout'),
     path('login/', views.login_view, name='login'),
     path('shop', views.shop, name='shop'),

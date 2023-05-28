@@ -307,7 +307,7 @@ def login_view(request):
             login(request, user)
             return redirect('/home')
         else:
-            return render(request, 'registration/login.html', {'error_message': 'Ошибка!'})
+            return render(request, 'registration/login.html', context={"failed": True})
     else:
         return render(request, 'registration/login.html')
 
