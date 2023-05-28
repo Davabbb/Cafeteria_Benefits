@@ -205,6 +205,9 @@ def create_worker(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
+        if username is "" or password is "":
+            return redirect('/staff')
+
         if User.objects.filter(username=username).exists():
             return redirect('/staff')
 
