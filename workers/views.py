@@ -116,7 +116,7 @@ def shop(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    expirience = str(worker.experience)
+    experience = str(worker.experience)
     
 
     products = Product.objects.all()
@@ -129,14 +129,13 @@ def shop(request):
                "last_name": last_name,
                "email": email_,
                "money": money,
-               "expirience": expirience,
+               "experience": experience,
                "surname": surname,
                "spec": speciality,
                "products": products,
                "purchases": purchases,
                "wishlist": wishlist.products.all(),
                }
-    print(expirience)
     return render(request, 'main/home.html', context=context)
 
 
@@ -149,7 +148,7 @@ def cart(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    expirience = worker.experience
+    experience = worker.experience
 
     products = Product.objects.all()
     is_admin = request.user.is_staff
@@ -161,7 +160,7 @@ def cart(request):
                "last_name": last_name,
                "email": email_,
                "money": money,
-               "expirience": expirience,
+               "experience": experience,
                "surname": surname,
                "spec": speciality,
                "products": products,
@@ -183,14 +182,14 @@ def staff(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    expirience = worker.experience
+    experience = worker.experience
     workers = Worker.objects.all()
 
     context = {"first_name": first_name,
                "last_name": last_name,
                "email": email_,
                "money": money,
-               "expirience": expirience,
+               "experience": experience,
                "surname": surname,
                "spec": speciality,
                "workers": workers,

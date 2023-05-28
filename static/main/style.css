@@ -163,7 +163,7 @@ header {
 	display: flex;
 	width: 645px;
 	height: 118px;
-	background: none;
+	background: #D9D9D9;
 	border-radius: 60px;
 }
 .fio{
@@ -192,7 +192,7 @@ header {
 	display: flex;
 	width: 448px;
 	height: 192px;
-	background: none;
+	background: #D9D9D9;
 	border-radius: 60px;
 }
 .post{
