@@ -52,7 +52,9 @@
     </div>
     <div class="infd">
         <span class="post">{{ spec }}</span>
-        <span class="experience">{{ experience }}</span>
+        {% if experience != 'None' %}
+            <span class="experience">{{ experience }}</span>
+        {% endif %}
     </div>
     <div class="skin">
         <ion-icon class="person" name="person-outline"></ion-icon>

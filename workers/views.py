@@ -122,6 +122,7 @@ def shop(request):
                "purchases": purchases,
                "wishlist": wishlist.products.all(),
                }
+    print(experience)
     return render(request, 'main/home.html', context=context)
 
 
