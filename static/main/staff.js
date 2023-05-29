@@ -43,21 +43,19 @@ editButtons.forEach(function (button) {
   });
 });
 
-$(document).ready(function(){
-  $('.reportbtn').click(function(){
-      $.ajax({
-          url: '/report/',
-          type: 'GET',
-          success: function(data){
-              var blob = new Blob([data]);
-              var link = document.createElement('a');
-              link.href = window.URL.createObjectURL(blob);
-              link.download = 'report.xlsx';
-              link.click();
-          },
-          error: function(jqXHR, textStatus, errorThrown){
-              alert(textStatus);
-          }
-      });
-  });
+const reportbtn = document.querySelector('.reportbtn')
+reportbtn.addEventListener('click', () => {
+  fetch('/report', {
+    method: 'GET',
+  })
+    .then(response => response.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'report.xlsx');
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    });
 });

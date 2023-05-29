@@ -12,8 +12,6 @@ from django.contrib.auth.models import User
 from .models import *
 from products.models import *
 from django.http import HttpResponse
-from django.utils.encoding import smart_str
-import io
 from openpyxl import Workbook
 
 from django.contrib.auth import authenticate, login, logout
@@ -209,7 +207,7 @@ def create_worker(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        if username is "" or password is "":
+        if username == "" or password == "":
             return redirect('/staff')
 
         if User.objects.filter(username=username).exists():
@@ -328,27 +326,32 @@ def info(request):
 def report(request):
     if not request.user.is_staff:
         return HttpResponseForbidden('У вас нетт доступа к этой странице.')
-    products = Product.objects.all()
-    output = io.BytesIO()
+
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=report.xlsx'
+
     workbook = Workbook()
     worksheet = workbook.active
-    worksheet.title = 'Report'
-    worksheet['A1'] = 'Product Name'
-    worksheet['B1'] = 'Total Purchases'
-    row = 2
+    worksheet.title = 'Отчёт'
+    columns = ['Название', 'Стоимость', 'Описание', 'Кол-во приобретений']
+    row_num = 1
+    for col_num, column_title in enumerate(columns, 1):
+        cell = worksheet.cell(row=row_num, column=col_num)
+        cell.value = column_title
+
+    products = Product.objects.all()
     for product in products:
-        purchase_count = Purchase.objects.filter(product=product).count()
-        worksheet.cell(row, 1, smart_str(product.name))
-        worksheet.cell(row, 2, purchase_count)
-        row += 1
-    workbook.save(output)
-    
-    response = HttpResponse(content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=report.xlsx'
-    response.write(output.getvalue())
-    
-    output.seek(0) # Add this line to buffer the file
-    response.write(output.read()) # Add this line to write the buffered file
-    
+        purchased_count = Purchase.objects.filter(product=product).count()
+        row_num += 1
+        row = [
+            product.name,
+            str(product.price),
+            product.description,
+            str(purchased_count)
+        ]
+        for col_num, cell_value in enumerate(row, 1):
+            cell = worksheet.cell(row=row_num, column=col_num)
+            cell.value = cell_value
+    workbook.save(response)
     return response
 
