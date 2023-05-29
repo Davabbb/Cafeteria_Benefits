@@ -30,7 +30,7 @@ def home(request):
                "money": money,
                "spec": speciality
                }
-    return render(request, "landing/home.html", context=context)
+    return render(request, "main/home.html", context=context)
 
 
 @login_required
