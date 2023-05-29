@@ -135,7 +135,7 @@ def cart(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    experience = worker.experience
+    experience = str(worker.experience)
 
     products = Product.objects.filter(is_active=True).order_by('price')
     is_admin = request.user.is_staff
