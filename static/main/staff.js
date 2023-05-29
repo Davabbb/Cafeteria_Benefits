@@ -42,3 +42,20 @@ editButtons.forEach(function (button) {
       document.getElementById('worker_id').value = workerId;
   });
 });
+
+const reportbtn = document.querySelector('.reportbtn')
+reportbtn.addEventListener('click', () => {
+  fetch('/report', {
+    method: 'GET',
+  })
+    .then(response => response.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'report.xlsx');
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    });
+});

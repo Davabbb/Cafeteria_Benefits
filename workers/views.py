@@ -1,7 +1,7 @@
 import decimal
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -11,6 +11,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
 from products.models import *
+from django.http import HttpResponse
+from openpyxl import Workbook
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
@@ -206,7 +208,7 @@ def create_worker(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        if username is "" or password is "":
+        if username == "" or password == "":
             return redirect('/staff')
 
         if User.objects.filter(username=username).exists():
@@ -321,3 +323,35 @@ def info(request):
         return redirect('/home')
     return render(request, 'main/info.html')
 
+@login_required
+def report(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden('У вас нетт доступа к этой странице.')
+
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=report.xlsx'
+
+    workbook = Workbook()
+    worksheet = workbook.active
+    worksheet.title = 'Отчёт'
+    columns = ['Название', 'Стоимость', 'Описание', 'Кол-во приобретений']
+    row_num = 1
+    for col_num, column_title in enumerate(columns, 1):
+        cell = worksheet.cell(row=row_num, column=col_num)
+        cell.value = column_title
+
+    products = Product.objects.all()
+    for product in products:
+        purchased_count = Purchase.objects.filter(product=product).count()
+        row_num += 1
+        row = [
+            product.name,
+            str(product.price),
+            product.description,
+            str(purchased_count)
+        ]
+        for col_num, cell_value in enumerate(row, 1):
+            cell = worksheet.cell(row=row_num, column=col_num)
+            cell.value = cell_value
+    workbook.save(response)
+    return response
