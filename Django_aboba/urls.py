@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 
-def handler404(request):
+def handler404(request, exception):
     return TemplateView.as_view(template_name="404/404.html")(request)
 
 
