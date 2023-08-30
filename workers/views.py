@@ -1,21 +1,17 @@
 import decimal
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.http import HttpResponseForbidden, JsonResponse
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from .models import *
 from products.models import *
 from django.http import HttpResponse
 from openpyxl import Workbook
 
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
 
 
 @login_required
@@ -105,7 +101,6 @@ def shop(request):
     money = worker.money
     speciality = worker.speciality
     experience = str(worker.experience)
-    
 
     products = Product.objects.filter(is_active=True).order_by('price')
     is_admin = request.user.is_staff
@@ -124,7 +119,6 @@ def shop(request):
                "purchases": purchases,
                "wishlist": wishlist.products.all(),
                }
-    print(experience)
     return render(request, 'main/home.html', context=context)
 
 
@@ -326,7 +320,7 @@ def info(request):
 @login_required
 def report(request):
     if not request.user.is_staff:
-        return HttpResponseForbidden('У вас нетт доступа к этой странице.')
+        return HttpResponseForbidden('У вас нет доступа к этой странице.')
 
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename=report.xlsx'
