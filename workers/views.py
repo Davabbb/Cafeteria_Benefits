@@ -10,7 +10,9 @@ from .models import *
 from products.models import *
 from django.http import HttpResponse
 from openpyxl import Workbook
-
+from Django_aboba.settings import EMAIL_HOST_USER
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -187,7 +189,32 @@ def receipt_add(request):
         receipt = Receipt(image=request.FILES['file'])
         receipt.worker = worker
         receipt.save()
-        messages.success(request, 'Фотография успешно загружена')
+        staff_users = User.objects.filter(is_staff=True)
+        emails_of_stuff = []
+        for work in staff_users:
+            if worker.city == work.worker.city and work.worker.email:
+                emails_of_stuff.append(work.worker.email)
+        if len(emails_of_stuff) == 0:
+            for work in staff_users:
+                if work.worker.email:
+                    emails_of_stuff.append(work.worker.email)
+        city = worker.city if worker.city else "\"Город не указан\""
+        email_adress = worker.email if worker.email else "\"Email не указан\""
+        speciality = worker.speciality if worker.speciality else "\"Должность не указана\""
+        subject = f'Чек на льготу от {worker.user.username} из города {city}.'
+        message = f'Работник: {worker.last_name} {worker.first_name} {worker.surname}. Email: {email_adress}. Должность: {speciality}.'
+        email = EmailMessage(
+            subject,
+            message,
+            EMAIL_HOST_USER,
+            emails_of_stuff)
+        if receipt.image:
+            email.attach(receipt.image.name, receipt.image.read())
+        email.send()
+        messages.success(request, 'Фотография успешно загружена. Сообщение hr отправлено, ожидайте.')
+        return redirect('/cart')
+    else:
+        messages.success(request, 'Ошибка.')
         return redirect('/cart')
 
 
