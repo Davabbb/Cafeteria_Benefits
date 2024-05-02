@@ -100,7 +100,7 @@ def shop(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    experience = str(worker.experience)
+    birthday = worker.birthday
 
     products = Product.objects.filter(is_active=True).order_by('price')
     is_admin = request.user.is_staff
@@ -112,7 +112,7 @@ def shop(request):
                "last_name": last_name,
                "email": email_,
                "money": money,
-               "experience": experience,
+               "birthday": birthday,
                "surname": surname,
                "spec": speciality,
                "products": products,
@@ -131,7 +131,7 @@ def cart(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    experience = str(worker.experience)
+    birthday = worker.birthday
 
     products = Product.objects.filter(is_active=True).order_by('price')
     is_admin = request.user.is_staff
@@ -143,7 +143,7 @@ def cart(request):
                "last_name": last_name,
                "email": email_,
                "money": money,
-               "experience": experience,
+               "birthday": birthday,
                "surname": surname,
                "spec": speciality,
                "products": products,
@@ -165,14 +165,14 @@ def staff(request):
     email_ = worker.email
     money = worker.money
     speciality = worker.speciality
-    experience = worker.experience
+    birthday = worker.birthday
     workers = Worker.objects.all()
 
     context = {"first_name": first_name,
                "last_name": last_name,
                "email": email_,
                "money": money,
-               "experience": experience,
+               "birthday": birthday,
                "surname": surname,
                "spec": speciality,
                "workers": workers,
@@ -198,9 +198,11 @@ def create_worker(request):
         first_name = request.POST.get('first_name')
         surname = request.POST.get('patronymic')
         speciality = request.POST.get('speciality')
-        expirience = request.POST.get('expirience')
+        birthday = request.POST.get('birthday')
         username = request.POST.get('username')
         password = request.POST.get('password')
+        city = request.POST.get('city')
+        email = request.POST.get('email')
 
         if username == "" or password == "":
             return redirect('/staff')
@@ -219,7 +221,9 @@ def create_worker(request):
         worker.last_name = last_name
         worker.surname = surname
         worker.speciality = speciality
-        worker.experience = expirience
+        worker.birthday = birthday
+        worker.email = email
+        worker.city = city
         worker.save()
 
     return redirect('/staff')
@@ -244,7 +248,9 @@ def edit_worker(request):
         new_lastname = request.POST.get('new_lastname')
         new_surname = request.POST.get('new_surname')
         new_speciality = request.POST.get('new_speciality')
-        new_experience = request.POST.get('new_experience')
+        new_birthday = request.POST.get('new_birthday')
+        new_email = request.POST.get('new_email')
+        new_city = request.POST.get('new_city')
         money_added = request.POST.get('money')
         pk = request.POST.get('worker_id')
         worker = get_object_or_404(Worker, pk=pk)
@@ -257,8 +263,12 @@ def edit_worker(request):
             worker.surname = new_surname
         if new_speciality != "":
             worker.speciality = new_speciality
-        if new_experience != "":
-            worker.experience = new_experience
+        if new_birthday != "":
+            worker.birthday = new_birthday
+        if new_email != "":
+            worker.email = new_email
+        if new_city != "":
+            worker.city = new_city
         if money_added != "":
             worker.money += decimal.Decimal(money_added)
         worker.save()
