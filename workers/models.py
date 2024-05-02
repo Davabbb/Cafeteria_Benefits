@@ -3,7 +3,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
-
+from datetime import date
 
 class Worker(models.Model):
     user = models.OneToOneField(User, related_name="worker", unique=True, blank=True, null=True, default=None,
@@ -14,9 +14,8 @@ class Worker(models.Model):
     surname = models.CharField(max_length=128, blank=True, null=True, default=None) # Отчество
 
     email = models.EmailField(blank=True, null=True, default=None)
-
+    birthday = models.DateField(default=date.today)
     speciality = models.CharField(max_length=128, blank=True, null=True, default=None)
-    experience = models.DecimalField(max_digits=30, decimal_places=0, blank=True, null=True, default=0)
     money = models.DecimalField(max_digits=10000, decimal_places=0, blank=True, null=True, default=0)
 
     city = models.CharField(max_length=128, blank=True, null=True, default=None)
