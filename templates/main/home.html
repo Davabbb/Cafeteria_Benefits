@@ -111,7 +111,7 @@
     </div>
 
     <div id="openModalhistory" class="modalhistory">
-        <a href="#close" title="Close" class="close">×</a>
+        <a href="#close" title="Close" class="close1">×</a>
 
         <div class="historymodaldiv">
             <h1 class="historymodalh1">История покупок</h1>
@@ -122,6 +122,7 @@
             <div class="buy">
                 <span class="buyname">{{ purchase.product }}</span>
                 <span class="buydate">{{ purchase.date|date:"d/m/y" }}</span>
+                <span class="buycode">{{ "Code" }}</span>
             </div>
             {% endfor %}
         </div>

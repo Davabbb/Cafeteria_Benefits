@@ -463,7 +463,7 @@ color: #000000;
 
 .modalhistory {
     position: absolute;
-	width: 835px;
+	width: 1050px;
 	height: 1470px;
 	top: 404px;
 	left: 543px ;
@@ -486,9 +486,9 @@ color: #000000;
 	  pointer-events: auto; /* элемент видим для событий мыши */
 }
 
-.close {
+.close1 {
 	position: absolute;
-	left: 755px;
+	left: 955px;
 	top: -5px;
     font-family: sans-serif;
     font-size: 100px;
@@ -499,7 +499,7 @@ color: #000000;
     text-decoration: none;
 }
 /* Стили для закрывающей кнопки в фокусе или наведении */
-.close:focus, .close:hover {
+.close1:focus, .close1:hover {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -508,9 +508,9 @@ color: #000000;
 
 .historymodaldiv{
 	position: absolute;
-	margin-left: 187px;
+	margin-left: 87px;
 	margin-top: 60px;
-	width: 461px;
+	width: 860px;
 	height: 101px;
 	background: #323E49;
 	border-radius: 50px;
@@ -536,7 +536,7 @@ color: #000000;
 	position: absolute;
 	left: 48px;
 	top: 240px;
-	width: 739px;
+	width: 977px;
 	height: 1182px;
 	
 	background: #323E49;
@@ -545,7 +545,7 @@ color: #000000;
 	position: relative;
 	margin-left: -15px;
 	margin-top: -4px;
-	width: 677px;
+	width: 915px;
 	height: 123px;
 	background: none;
 	border: 4px solid #000000;
@@ -567,6 +567,23 @@ color: #000000;
 	left: 373px;
 	top: -4px;
 	width: 300px;
+	height: 100%;
+
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	border: 4px solid #000000;
+}
+.buycode{
+	position: absolute;
+	left: 677px;
+	top: -4px;
+	width: 234px;
 	height: 100%;
 
 

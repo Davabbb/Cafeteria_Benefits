@@ -9,7 +9,7 @@ body
     margin: 0px;
     width: 1920px;
     height: 1056px;
-    background: url(фон.png); /* Фоновый цвет и фоновый рисунок*/
+    background: #FFFFFF ; /* Фоновый цвет и фоновый рисунок url(фон.png)*/
 	background-repeat: no-repeat; /* Изображение повторяется по горизонтали */
     background-size: 1920px;
 }
@@ -62,7 +62,7 @@ header {
     width: 593px;
     height: 108px;
 
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(68, 62, 62, 0.15);
     border-radius: 70px;
     left: 39px;
     top: 27px;
@@ -89,7 +89,7 @@ header {
     width: 864px;
     height: 637px;
 
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(68, 62, 62, 0.15);
     border-radius: 60px;
 }
 .textp{
