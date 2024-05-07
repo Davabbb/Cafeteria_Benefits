@@ -126,6 +126,37 @@ header {
 	height: 95px;
 }
 
+.report{
+	background: #D9D9D9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat';
+	line-height: 49px;
+	color: #000000;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	letter-spacing: -0.03em;
+
+	margin: 0px;
+	position: absolute;
+	top: 506px;
+	left: 1100px;
+
+	vertical-align: middle;
+	width: 241px;
+	height: 101px;
+	border-radius: 90px;
+	border-style: solid;
+	border-color: #D9D9D9;
+	border-width:8px;
+	text-decoration: none;
+}
+.report:hover{
+	border-color: #323E49;
+}
+
 .hystorysubmit{
 	background: #D9D9D9;
 	display: flex;
