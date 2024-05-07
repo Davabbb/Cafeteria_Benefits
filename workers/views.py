@@ -14,6 +14,8 @@ from Django_aboba.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate, login, logout
+import random
+import string
 
 
 @login_required
@@ -56,7 +58,8 @@ def product_purchase(request, pk):
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
     if product.price <= worker.money:
         worker.money -= product.price
-        purchase = Purchase(product=product, user=request.user)
+        letters = string.ascii_lowercase
+        purchase = Purchase(product=product, user=request.user, promocod=''.join(random.choice(letters) for i in range(10)))
         if product in wishlist.products.all():
             wishlist.products.remove(product)
             wishlist.save()

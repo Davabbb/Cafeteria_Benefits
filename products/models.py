@@ -20,6 +20,7 @@ class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
     product = models.ForeignKey(Product, on_delete=models.DO_NOTHING, related_name='purchases')
     date = models.DateTimeField(auto_now_add=True)
+    promocod = models.CharField(max_length=255, blank=True, null=True, default="a23adf2")
 
     def __str__(self):
         return f'{self.user.username} bought {self.product.name} on {self.date}'

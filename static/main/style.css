@@ -462,11 +462,11 @@ color: #000000;
 
 
 .modalhistory {
-    position: absolute;
-	width: 1050px;
+    position: relative;
+	width: 1140px;
 	height: 1470px;
-	top: 404px;
-	left: 543px ;
+	top: 200px;
+	left: 380px ;
 	background: #D9D9D9;
 	border-style: solid;
 	border-width: 8px;
@@ -488,7 +488,7 @@ color: #000000;
 
 .close1 {
 	position: absolute;
-	left: 955px;
+	left: 1065px;
 	top: -5px;
     font-family: sans-serif;
     font-size: 100px;
@@ -510,7 +510,7 @@ color: #000000;
 	position: absolute;
 	margin-left: 87px;
 	margin-top: 60px;
-	width: 860px;
+	width: 970px;
 	height: 101px;
 	background: #323E49;
 	border-radius: 50px;
@@ -536,7 +536,7 @@ color: #000000;
 	position: absolute;
 	left: 48px;
 	top: 240px;
-	width: 977px;
+	width: 1050px;
 	height: 1182px;
 	
 	background: #323E49;
@@ -545,7 +545,7 @@ color: #000000;
 	position: relative;
 	margin-left: -15px;
 	margin-top: -4px;
-	width: 915px;
+	width: 975px;
 	height: 123px;
 	background: none;
 	border: 4px solid #000000;
@@ -565,6 +565,23 @@ color: #000000;
 .buydate{
 	position: absolute;
 	left: 373px;
+	top: -4px;
+	width: 300px;
+	height: 100%;
+
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	border: 4px solid #000000;
+}
+.buypromocod{
+	position: absolute;
+	left: 673px;
 	top: -4px;
 	width: 300px;
 	height: 100%;
