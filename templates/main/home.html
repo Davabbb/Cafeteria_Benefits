@@ -45,9 +45,12 @@
         </a>
     {% endif %}
 
-    <a href="#openModalhistory" class="report">Отчет</a>
+    {% if admin %}
+        <a href="{% url 'export_benefits_xls' %}" class="report">Отчет</a>
+    {% endif %}
 
     <a href="#openModalhistory" class="hystorysubmit">История покупок</a>
+
 
     <div class="fiod">
         <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>

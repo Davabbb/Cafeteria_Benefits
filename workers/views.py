@@ -16,6 +16,7 @@ from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate, login, logout
 import random
 import string
+import openpyxl
 
 
 @login_required
@@ -387,5 +388,30 @@ def report(request):
         for col_num, cell_value in enumerate(row, 1):
             cell = worksheet.cell(row=row_num, column=col_num)
             cell.value = cell_value
+    workbook.save(response)
+    return response
+
+@login_required
+def export_benefits_xls(request):
+    purchases_by_user = Purchase.objects.filter().select_related('product').order_by('-date')
+    workbook = openpyxl.Workbook()
+
+    worksheet = workbook.active
+    worksheet.title = 'Purchases'
+
+    worksheet['A1'] = 'Льгота'
+    worksheet['B1'] = 'Дата'
+
+    row_num = 2
+    for purchase in purchases_by_user:
+        worksheet.cell(row=row_num, column=1, value=purchase.product.name)
+        worksheet.cell(row=row_num, column=2, value=purchase.date.strftime('%Y-%m-%d %H:%M:%S'))
+        row_num += 1
+
+    worksheet.column_dimensions['A'].width = 50
+    worksheet.column_dimensions['B'].width = 20
+
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=purchases.xlsx'
     workbook.save(response)
     return response

@@ -36,5 +36,7 @@ urlpatterns = [
     path('shop', views.shop, name='shop'),
     path('cart', views.cart, name='cart'),
     path('report/', views.report, name='report'),
-    path('info', views.info, name='info')
+    path('info', views.info, name='info'),
+    path('export/', views.export_benefits_xls, name='export_benefits_xls')
+
 ]
