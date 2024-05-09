@@ -37,6 +37,36 @@ def home(request):
 
 
 @login_required
+def shop_edit(request):
+    worker, _ = Worker.objects.get_or_create(user=request.user)
+    first_name = worker.first_name
+    last_name = worker.last_name
+    surname = worker.surname
+    email_ = worker.email
+    money = worker.money
+    speciality = worker.speciality
+    birthday = worker.birthday
+
+    products = Product.objects.filter(is_active=True).order_by('price')
+    is_admin = request.user.is_staff
+    purchases = request.user.purchases.all().order_by('-date')
+    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+
+    context = {"admin": is_admin,
+               "first_name": first_name,
+               "last_name": last_name,
+               "email": email_,
+               "money": money,
+               "birthday": birthday,
+               "surname": surname,
+               "spec": speciality,
+               "products": products,
+               "purchases": purchases,
+               "wishlist": wishlist.products.all(),
+               }
+    return render(request, 'main/home_edit.html', context=context)
+
+@login_required
 def user(request):
     worker = request.user.worker
     products = Product.objects.all()
@@ -315,7 +345,7 @@ def create_product(request):
         description = request.POST.get('description')
 
         if Product.objects.filter(name=name).exists():
-            return redirect('/staff')
+            return redirect('/home_edit')
 
         new_product = Product.objects.create(
             name=name,
@@ -324,7 +354,26 @@ def create_product(request):
         )
         new_product.save()
 
-    return redirect('/home')
+    return redirect('/home_edit')
+
+@login_required
+def edit_product(request):
+    if request.method == 'POST':
+        new_name = request.POST.get('new_name')
+        new_price = request.POST.get('new_price')
+        new_description = request.POST.get('new_description')
+        pk = request.POST.get('product_id')
+        product = get_object_or_404(Product, pk=pk)
+
+        if new_name != "":
+            product.name = new_name
+        if new_price != "":
+            product.price = new_price
+        if new_description != "":
+            product.description = new_description
+        product.save()
+
+    return redirect('/home_edit')
 
 
 @login_required
@@ -336,7 +385,7 @@ def delete_product(request, pk):
             wishlist.products.remove(product)
         product.is_active = False
         product.save()
-    return redirect('/home')
+    return redirect('/home_edit')
 
 
 def login_view(request):

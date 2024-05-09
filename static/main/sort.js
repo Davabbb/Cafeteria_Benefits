@@ -58,3 +58,11 @@ searchInput.addEventListener('input', function() {
     }
   });
 });
+
+var editButtons = document.querySelectorAll('.product_edit');
+editButtons.forEach(function (button) {
+  button.addEventListener('click', function (event) {
+      var productId = event.target.getAttribute('data-id-product');
+      document.getElementById('product_id').value = productId;
+  });
+});

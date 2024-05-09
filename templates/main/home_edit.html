@@ -52,7 +52,7 @@
     <a href="#openModalhistory" class="hystorysubmit">История покупок</a>
 
     {% if admin %}
-        <a href="/home_edit" class="mode_edit">Режим редактирования</a>
+        <a href="/home" class="mode_edit">Режим покупки</a>
     {% endif %}
 
     <div class="fiod">
@@ -94,17 +94,39 @@
             <div class="lgota">
                 <span class="lgotaname" title="{{ product.description }}">{{ product.name }}</span>
                 <span class="lgotaprice">{{ product.price }}</span>
-                {% if product in wishlist %}
-                    <button class="lgotabtn" type="submit" disabled>
-                        <span class="lgotakorsina">В корзину</span>
-                    </button>
-                    {% else %}
-                    <button class="lgotabtn" type="submit" form="add{{ product.pk }}">
-                        <span class="lgotakorsina">В корзину</span>
-                    </button>
-                    {% endif %}
-                <form id="add{{ product.pk }}" method="post" action="{% url 'add_to_wishlist' product.pk %}" hidden="true">
+                {% if admin %}
+                <button class="lgotadelete" type="submit" form="delete{{ product.pk }}">
+                    <span>×</span>
+                </button>
+                <form id="delete{{ product.pk }}" method="post" action="{% url 'delete_product' product.pk %}" hidden="true">
                     {% csrf_token %}
+                </form>
+                <button class="sbtn">
+                    <a href="#openModaledit" class="product_edit" data-id-product="{{ product.pk }}">Редактировать</a>
+                </button>
+                {% endif %}
+                
+                <form method="POST" action="{% url 'edit_product' %}">
+                    {% csrf_token %}
+                    <div id="openModaledit" class="modaledit">
+                        <a href="#close" title="Close" class="close">×</a>
+                        <input type="hidden" id="product_id" name="product_id" value="">
+                        <h1 class="pluslgotamodal">Название льготы</h1>
+                        <div class="pluslgotainput">
+                            <input class="pluslgotaname" type="text" name="new_name">
+                        </div>
+                        <h1 class="pluslgotamodal">Цена льготы</h1>
+                        <div class="pluslgotainput">
+                            <input class="pluslgotamoney" type="text" name="new_price">
+                        </div>
+                        <h1 class="pluslgotamodal">Описание</h1>
+                        <div class="pluslgotainput">
+                            <input class="pluslgotamoney" type="text" name="new_description">
+                        </div>
+                        <button class="editbtn">
+                            <input type="submit" value="Изменить">
+                        </button>
+                    </div>
                 </form>
             </div>
         {% endfor %}
@@ -129,6 +151,9 @@
     </div>
 
     {% if admin %}
+        <button class="pluslgota">
+            <a href="#openModalplus" class="pluslgotatext">Добавить льготу</a>
+        </button>
         <form method="POST" action="{% url 'create_product' %}">
             {% csrf_token %}
             <div id="openModalplus" class="modalplus">
