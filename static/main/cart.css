@@ -548,7 +548,7 @@ color: #000000;
 }
 
 .delete_lgota {
-	position: absolute;
+	position: relative;
 	left: 1225px;
 	top: 15px;
     font-family: sans-serif;
