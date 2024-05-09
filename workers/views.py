@@ -113,7 +113,7 @@ def remove_from_wishlist(request, pk):
     product = get_object_or_404(Product, pk=pk)
     wishlist = get_object_or_404(Wishlist, user=request.user)
     wishlist.products.remove(product)
-    return redirect('/home')
+    return redirect('/cart')
 
 
 class SignUp(CreateView):
