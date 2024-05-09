@@ -468,8 +468,8 @@ header {
 .lgotaprice{
 	position: absolute;
 	margin-top: 12px;
-	left: 988px;
-	width: 799px;
+	left: 858px;
+	width: 305px;
 	height: 99px;
 	font-family: 'Montserrat';
 	font-style: normal;
@@ -545,6 +545,26 @@ color: #000000;
 .modalhistory:target {
     opacity: 1; /* делаем окно видимым */
 	  pointer-events: auto; /* элемент видим для событий мыши */
+}
+
+.delete_lgota {
+	position: absolute;
+	left: 1225;
+	top: 24px;
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    color: #d11515;
+    opacity: 0.5;
+    text-decoration: none;
+}
+/* Стили для закрывающей кнопки в фокусе или наведении */
+.delete_lgota:focus, .delete_lgota:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
 }
 
 .close {
