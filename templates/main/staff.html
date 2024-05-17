@@ -41,12 +41,28 @@
         </button>
     </a>
 
-    <a href="/home" class="notificationsbtn">
+    <a href="#openModalnotifications" class="notificationsbtn">
         Уведомления
         <span class="notification-count {% if notifications_count == 0 %}zero{% else %}non-zero{% endif %}">
             {{ notifications_count }}
         </span>
     </a>
+
+    <div id="openModalnotifications" class="modalhistory">
+        <a href="#close" title="Close" class="close1">×</a>
+
+        <div class="historymodaldiv">
+            <h1 class="historymodalh1">Уведомления</h1>
+        </div>
+
+        <div class="historymodallist">
+            {% for notification in notifications %}
+            <div class="buy">
+                <span class="buyname">{{ notification  }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
     <div class="fiod">
         <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>
