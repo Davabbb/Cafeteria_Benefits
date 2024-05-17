@@ -18,12 +18,14 @@
 
 <body>
     <header>
-        <a href="#">
+        <a href="/home">
             <img src="{% static 'login/image.png' %}">
         </a>
-        <button class="exit">
-            <input type="submit" value="Выход">
-        </button>
+        <a href='/logout'>
+            <button class="exit">
+                <input type="submit" value="Выход">
+            </button>
+        </a>
     </header>
 
 
@@ -150,12 +152,11 @@
                 </button>
             </div>
         </form>
-        
+
     {% endif %}
 
 
     <script src="{% static 'main/sort.js' %}"></script>
-    <script src="{% static 'main/logout.js' %}"></script>
 </body>
 </html>
 

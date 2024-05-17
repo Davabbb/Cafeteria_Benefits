@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-!wjrmo$(av14wp*v)xmkdn2qxsp5&llp-mt*3_=i!r8a^8wn!f
 # DEBUG = True
 # ALLOWED_HOSTS = []
 
-DEBUG = True
-ALLOWED_HOSTS = ['10.1.11.12', '127.0.0.1']
+DEBUG = False
+ALLOWED_HOSTS = ['10.1.11.12', '127.0.0.1', 'spid991.pythonanywhere.com']
 
 # Application definition
 
@@ -117,6 +117,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_IRL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -127,10 +129,10 @@ LOGIN_REDIRECT_URL = "home"  # добавил сам
 LOGOUT_REDIRECT_URL = "login"
 AUTH_PROFILE_MODULE = "django_app.workers"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static', ),)  # добавил из видео
-STATICFILES_DIRS = [str(BASE_DIR / "static")]
+STATICFILES_DIRS = [str(BASE_DIR / "staticfiles")]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

@@ -121,10 +121,10 @@ class SignUp(CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/login.html"
 
-
+@login_required
 def logout_view(request):
     logout(request)
-    return redirect('/login')
+    return redirect('login')
 
 
 @login_required
