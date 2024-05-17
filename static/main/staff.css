@@ -57,11 +57,11 @@ header {
     letter-spacing: -0.03em;
     margin: 0px;
     position: absolute;
-    top: 475px;
-    left: 1100px;
+    top: 540px;
+    left: 516px;
     vertical-align: middle;
     width: 419px;
-    height: 70px;
+    height: 80px;
     border-radius: 90px;
     border-style: solid;
     border-color: #D9D9D9;
@@ -71,6 +71,37 @@ header {
 }
 
 .notificationsbtn:hover {
+    border-color: #323E49;
+}
+
+.seennotificationsbtn {
+    background: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat';
+    line-height: 49px;
+    color: #000000;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    letter-spacing: -0.03em;
+    margin: 0px;
+    position: absolute;
+    top: 540px;
+    left: 1100px;
+    vertical-align: middle;
+    width: 419px;
+    height: 80px;
+    border-radius: 90px;
+    border-style: solid;
+    border-color: #D9D9D9;
+    border-width: 8px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.seennotificationsbtn:hover {
     border-color: #323E49;
 }
 
@@ -96,7 +127,7 @@ header {
 }
 
 .modalhistory {
-    position: relative;
+    position: absolute;
 	width: 1140px;
 	height: 1470px;
 	top: 200px;

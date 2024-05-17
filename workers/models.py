@@ -40,7 +40,7 @@ class Receipt(models.Model):
     image = models.ImageField(upload_to='receipts/', blank=False, null=False)
 
     def __str__(self):
-        return "Дата добавления %s" % self.date
+        return f"Пользователь: {self.worker.user.username} Дата: {self.date}"
 
     class Meta:
         ordering = ['-date']

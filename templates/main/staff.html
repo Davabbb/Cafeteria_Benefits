@@ -58,7 +58,25 @@
         <div class="historymodallist">
             {% for notification in notifications %}
             <div class="buy">
-                <span class="buyname">{{ notification  }}</span>
+                <span class="buyname">{{ notification }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="#openModalseennotifications" class="seennotificationsbtn">Просмотренные уведомления</a>
+
+    <div id="openModalseennotifications" class="modalhistory">
+        <a href="#close" title="Close" class="close1">×</a>
+
+        <div class="historymodaldiv">
+            <h1 class="historymodalh1">Уведомления</h1>
+        </div>
+
+        <div class="historymodallist">
+            {% for notification in seen_notifications %}
+            <div class="buy">
+                <span class="buyname">{{ notification }}</span>
             </div>
             {% endfor %}
         </div>
