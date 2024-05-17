@@ -59,6 +59,7 @@
             {% for notification in notifications %}
             <div class="buy">
                 <span class="buyname">{{ notification }}</span>
+                <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
             </div>
             {% endfor %}
         </div>
@@ -77,6 +78,7 @@
             {% for notification in seen_notifications %}
             <div class="buy">
                 <span class="buyname">{{ notification }}</span>
+                <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
             </div>
             {% endfor %}
         </div>

@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.info, name='info'),
@@ -39,5 +41,8 @@ urlpatterns = [
     path('cart', views.cart, name='cart'),
     path('report', views.report, name='report'),
     path('info', views.info, name='info'),
-    path('export', views.export_benefits_xls, name='export_benefits_xls')
+    path('export', views.export_benefits_xls, name='export_benefits_xls'),
+    path('remove_notification/<int:pk>', views.remove_notification, name='remove_notification'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

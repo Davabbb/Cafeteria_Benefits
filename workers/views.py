@@ -230,32 +230,24 @@ def receipt_add(request):
         receipt.worker = worker
         receipt.save()
         staff_users = User.objects.filter(is_staff=True)
-        emails_of_stuff = []
+        admin_receivers = []
         for work in staff_users:
-            if worker.city == work.worker.city and work.worker.email:
-                emails_of_stuff.append(work.worker.email)
-        if len(emails_of_stuff) == 0:
+            if worker.city == work.worker.city:
+                admin_receivers.append(work)
+        if len(admin_receivers) == 0:
             for work in staff_users:
-                if work.worker.email:
-                    emails_of_stuff.append(work.worker.email)
-        city = worker.city if worker.city else "\"Город не указан\""
-        email_adress = worker.email if worker.email else "\"Email не указан\""
-        speciality = worker.speciality if worker.speciality else "\"Должность не указана\""
-        subject = f'Чек на льготу от {worker.user.username} из города {city}.'
-        message = f'Работник: {worker.last_name} {worker.first_name} {worker.surname}. Email: {email_adress}. Должность: {speciality}.'
-        email = EmailMessage(
-            subject,
-            message,
-            EMAIL_HOST_USER,
-            emails_of_stuff)
-        if receipt.image:
-            email.attach(receipt.image.name, receipt.image.read())
-        email.send()
-        messages.success(request, 'Фотография успешно загружена. Сообщение hr отправлено, ожидайте.')
+                admin_receivers.append(work)
+        for obj in admin_receivers:
+            new_notification = Notification.objects.create(received_receipt=receipt, notification_receiver=obj.worker)
+            new_notification.save()
         return redirect('/cart')
-    else:
-        messages.success(request, 'Ошибка.')
-        return redirect('/cart')
+
+
+@login_required
+def remove_notification(request, pk):
+    note =  get_object_or_404(Notification, pk=pk)
+    note.was_seen = True
+    return redirect('/staff')
 
 
 @login_required
