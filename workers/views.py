@@ -17,7 +17,7 @@ from django.contrib.auth import authenticate, login, logout
 import random
 import string
 import openpyxl
-
+from notifications.models import Notification
 
 @login_required
 def home(request):
@@ -203,6 +203,9 @@ def staff(request):
     speciality = worker.speciality
     birthday = worker.birthday
     workers = Worker.objects.all()
+    notifications = Notification.objects.filter(notification_receiver=worker, was_seen=False)
+    seen_notifications = Notification.objects.filter(notification_receiver=worker, was_seen=True)
+    notifications_count = notifications.count()
 
     context = {"first_name": first_name,
                "last_name": last_name,
@@ -212,6 +215,9 @@ def staff(request):
                "surname": surname,
                "spec": speciality,
                "workers": workers,
+               "notifications_count": notifications_count,
+               "notifications": notifications,
+               "seen_notifications": seen_notifications
                }
     return render(request, 'main/staff.html', context=context)
 

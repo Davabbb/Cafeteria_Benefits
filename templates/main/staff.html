@@ -41,6 +41,13 @@
         </button>
     </a>
 
+    <a href="/home" class="notificationsbtn">
+        Уведомления
+        <span class="notification-count {% if notifications_count == 0 %}zero{% else %}non-zero{% endif %}">
+            {{ notifications_count }}
+        </span>
+    </a>
+
     <div class="fiod">
         <span class="fio">{{ last_name }} {{ first_name }} {{ surname }}</span>
     </div>
