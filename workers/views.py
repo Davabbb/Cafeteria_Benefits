@@ -10,9 +10,6 @@ from .models import *
 from products.models import *
 from django.http import HttpResponse
 from openpyxl import Workbook
-from Django_aboba.settings import EMAIL_HOST_USER
-from django.core.mail import send_mail
-from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate, login, logout
 import random
 import string
@@ -247,6 +244,7 @@ def receipt_add(request):
 def remove_notification(request, pk):
     note =  get_object_or_404(Notification, pk=pk)
     note.was_seen = True
+    note.save()
     return redirect('/staff')
 
 
@@ -332,6 +330,24 @@ def edit_worker(request):
             worker.money += decimal.Decimal(money_added)
         worker.save()
 
+    return redirect('/staff')
+
+@login_required
+def edit_balance(request):
+    if request.method == 'POST':
+        money_added = request.POST.get('money')
+        pk = request.POST.get('worker_id')
+        worker = get_object_or_404(Worker, pk=pk)
+        if money_added != "":
+            worker.money += decimal.Decimal(money_added)
+        worker.save()
+
+    return redirect('/staff')
+
+@login_required
+def delete_seen_notifications(request):
+    seen_notifications = Notification.objects.filter(notification_receiver=worker, was_seen=True)
+    seen_notifications.delete()
     return redirect('/staff')
 
 

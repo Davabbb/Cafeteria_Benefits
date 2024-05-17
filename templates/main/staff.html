@@ -60,6 +60,7 @@
             <div class="buy">
                 <span class="buyname">{{ notification }}</span>
                 <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
+                <a href="{% url 'remove_notification' notification.pk %}">x</a>
             </div>
             {% endfor %}
         </div>

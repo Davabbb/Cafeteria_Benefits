@@ -43,6 +43,8 @@ urlpatterns = [
     path('info', views.info, name='info'),
     path('export', views.export_benefits_xls, name='export_benefits_xls'),
     path('remove_notification/<int:pk>', views.remove_notification, name='remove_notification'),
+    path('edit_balance', views.edit_balance, name='edit_balance'),
+    path('delete_seen_notifications', views.delete_seen_notifications, name='delete_seen_notifications'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
