@@ -15,8 +15,6 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.info, name='info'),
@@ -46,5 +44,3 @@ urlpatterns = [
     path('edit_balance', views.edit_balance, name='edit_balance'),
     path('delete_seen_notifications', views.delete_seen_notifications, name='delete_seen_notifications'),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

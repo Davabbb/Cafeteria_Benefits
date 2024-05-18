@@ -48,7 +48,7 @@
 
     <form id="fileUploadForm" method="POST" action="{% url 'receipt_add' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="file" id="receiptFile" style="display:none;">
+        <input type="file" name="file" id="receiptFile" style="display:none;" accept=".jpg,.png,.jpeg,.gif,.pdf">
         <button type="button" class="btnfile">
             <ion-icon class="fileicon" name="document-attach-outline"></ion-icon>
         </button>

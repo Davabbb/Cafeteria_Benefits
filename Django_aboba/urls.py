@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-
+from django.conf import settings
+from django.urls import re_path
+from django.views.static import serve
 
 def handler404(request, exception):
     return TemplateView.as_view(template_name="404/404.html")(request)
@@ -27,6 +29,8 @@ urlpatterns = [
     path('', include('workers.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+urlpatterns += [re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+                re_path(r'^receipts/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }), ]
 
 
 handler404 = handler404
