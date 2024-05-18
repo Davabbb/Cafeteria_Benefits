@@ -81,6 +81,7 @@
                 <span class="buyname">{{ notification }}</span>
                 <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
             </div>
+            <a href="{% url 'delete_seen_notifications' %}">Удалить просмотренные уведомления</a>
             {% endfor %}
         </div>
     </div>
