@@ -1018,7 +1018,7 @@ header {
 .modaleditbalance {
     position: absolute;
 	width: 835px;
-	height: 2150px;
+	height: 500px;
 	top: 404px;
 	left: 543px ;
 	background: #D9D9D9;
@@ -1039,6 +1039,7 @@ header {
     opacity: 1; /* делаем окно видимым */
 	  pointer-events: auto; /* элемент видим для событий мыши */
 }
+
 .modaledit {
     position: absolute;
 	width: 835px;

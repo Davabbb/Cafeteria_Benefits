@@ -55,31 +55,33 @@
             <h1 class="historymodalh1">Уведомления</h1>
         </div>
 
-    <div class="historymodallist">
-        {% for notification in notifications %}
-            <div class="buy">
-                <span class="buyname">{{ notification }}</span>
-                <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
-                <a href="#openModaleditBalance" class="balanceedit" data-id-balance="{{ notification.notification_receiver.pk }}">Галочка</a>
-                <a href="{% url 'remove_notification' notification.pk %}">x</a>
-            </div>
-        {% endfor %}
+        <div class="historymodallist">
+            {% for notification in notifications %}
+                <div class="buy">
+                    <span class="buyname">{{ notification }}</span>
+                    <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
+                    <a href="#openModaleditBalance" class="balance_edit_staff" data-balance="{{ notification.received_receipt.pk }}">Галочка</a>
+                    <a href="{% url 'remove_notification' notification.pk %}">x</a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
-    <!--<div id="openModaleditBalance" class="modaledit">-->
-    <!--    <form method="post" action="{% url 'edit_balance' %}">-->
-    <!--        {% csrf_token %}-->
-    <!--        <input type="hidden" id="worker_id_balance" name="worker_id_balance" value="">-->
-    <!--        <h1 class="editfioball">Начисилить баллы</h1>-->
-    <!--        <div class="editstaff">-->
-    <!--            <input class="editstaffinputsoname" type="text" name="money">-->
-    <!--        </div>-->
+    <div id="openModaleditBalance" class="modaleditbalance">
+        <a href="#openModalnotifications" title="Close" class="close">×</a>
+        <form method="post" action="{% url 'edit_balance' %}">
+            {% csrf_token %}
+            <input type="hidden" id="notification_id" name="notification_id" value="">
+            <h1 class="editfioball">Начислить баллы</h1>
+            <div class="editstaff">
+                <input class="editstaffinputsoname" type="text" name="money">
+            </div>
 
-    <!--        <button class="editbtn">-->
-    <!--            <input type="submit" value="Изменить">-->
-    <!--        </button>-->
-    <!--    </form>-->
-    <!--</div>-->
+            <button class="editbtn">
+                <input type="submit" value="Изменить">
+            </button>
+        </form>
+    </div>
 
     <a href="#openModalseennotifications" class="seennotificationsbtn">Просмотренные уведомления</a>
 
@@ -265,7 +267,7 @@
         </div>
     </form>
 
-    <script src="{% static 'main/staff.js' %}"></script>
+    <script src="../../static/main/staff.js"></script>
 </body>
 </html>
 

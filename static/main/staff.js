@@ -17,6 +17,14 @@ plusBtn.addEventListener('click', function() {
   xhr.send(JSON.stringify({'surname': surname, 'name': name, 'patronymic': patronymic, 'expirience': expirience, 'speciality': speciality}));
 });
 
+var editBalanceButtons = document.querySelectorAll('.balance_edit_staff');
+editBalanceButtons.forEach(function (button) {
+  button.addEventListener('click', function (event) {
+      var workerIdbalance = event.target.getAttribute('data-balance');
+      document.getElementById('notification_id').value = workerIdbalance;
+  });
+});
+
 const searchInput = document.querySelector('.searchinput');
 const staffList = document.querySelector('.list');
 
@@ -40,14 +48,6 @@ editButtons.forEach(function (button) {
   button.addEventListener('click', function (event) {
       var workerId = event.target.getAttribute('data-id');
       document.getElementById('worker_id').value = workerId;
-  });
-});
-
-var editButtons_ = document.querySelectorAll('.balanceedit');
-editButtons_.forEach(function (button) {
-  button.addEventListener('click', function (event) {
-      var workerId = event.target.getAttribute('data-id-balance');
-      document.getElementById('worker_id_balance').value = workerId;
   });
 });
 

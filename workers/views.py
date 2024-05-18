@@ -336,11 +336,18 @@ def edit_worker(request):
 def edit_balance(request):
     if request.method == 'POST':
         money_added = request.POST.get('money')
-        pk = request.POST.get('worker_id_balance')
-        worker = get_object_or_404(Worker, pk=pk)
+        pk = request.POST.get('notification_id')
+        receipt = get_object_or_404(Receipt, pk=pk)
+        notifications = Notification.objects.filter(received_receipt=receipt, was_seen=False)
         if money_added != "":
-            worker.money += decimal.Decimal(money_added)
-        worker.save()
+            money_added = decimal.Decimal(money_added)
+            if money_added > 0:
+                worker = receipt.worker
+                worker.money += money_added
+                worker.save()
+                for notification in notifications:
+                    notification.was_seen = True
+                    notification.save()
 
     return redirect('/staff')
 
@@ -348,8 +355,10 @@ def edit_balance(request):
 def delete_seen_notifications(request):
     worker, _ = Worker.objects.get_or_create(user=request.user)
     seen_notifications = Notification.objects.filter(notification_receiver=worker, was_seen=True)
-    if seen_notifications.count() > 0:
-        seen_notifications.delete()
+    for notification in seen_notifications:
+        receipt = notification.received_receipt
+        notification.delete()
+        receipt.delete()
     return redirect('/staff')
 
 
