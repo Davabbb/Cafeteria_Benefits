@@ -336,7 +336,7 @@ def edit_worker(request):
 def edit_balance(request):
     if request.method == 'POST':
         money_added = request.POST.get('money')
-        pk = request.POST.get('worker_id')
+        pk = request.POST.get('worker_id_balance')
         worker = get_object_or_404(Worker, pk=pk)
         if money_added != "":
             worker.money += decimal.Decimal(money_added)
@@ -346,8 +346,10 @@ def edit_balance(request):
 
 @login_required
 def delete_seen_notifications(request):
+    worker, _ = Worker.objects.get_or_create(user=request.user)
     seen_notifications = Notification.objects.filter(notification_receiver=worker, was_seen=True)
-    seen_notifications.delete()
+    if seen_notifications.count() > 0:
+        seen_notifications.delete()
     return redirect('/staff')
 
 

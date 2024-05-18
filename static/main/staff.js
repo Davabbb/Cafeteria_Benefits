@@ -43,6 +43,14 @@ editButtons.forEach(function (button) {
   });
 });
 
+var editButtons_ = document.querySelectorAll('.balanceedit');
+editButtons_.forEach(function (button) {
+  button.addEventListener('click', function (event) {
+      var workerId = event.target.getAttribute('data-id-balance');
+      document.getElementById('worker_id_balance').value = workerId;
+  });
+});
+
 const reportbtn = document.querySelector('.reportbtn')
 reportbtn.addEventListener('click', () => {
   fetch('/report', {
