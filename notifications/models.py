@@ -7,7 +7,10 @@ class Notification(models.Model):
     was_seen = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"От {self.received_receipt.worker.last_name} {self.received_receipt.worker.first_name[0]}. {self.received_receipt.worker.surname[0]}., {self.received_receipt.date}"
+        if len(self.received_receipt.worker.surname) > 0 and len(self.received_receipt.worker.first_name) > 0 and len(self.received_receipt.worker.last_name) > 0:
+            return f"От {self.received_receipt.worker.last_name} {self.received_receipt.worker.first_name[0]}. {self.received_receipt.worker.surname[0]}., {self.received_receipt.date}"
+        else:
+            return f"От {self.received_receipt.worker.user.username}, {self.received_receipt.date}"
 
     class Meta:
         verbose_name = 'Уведомление'
