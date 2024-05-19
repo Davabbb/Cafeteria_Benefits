@@ -242,9 +242,12 @@ def receipt_add(request):
 
 @login_required
 def remove_notification(request, pk):
-    note =  get_object_or_404(Notification, pk=pk)
-    note.was_seen = True
-    note.save()
+    notification =  get_object_or_404(Notification, pk=pk)
+    receipt = notification.received_receipt
+    notifications = Notification.objects.filter(received_receipt=receipt, was_seen=False)
+    for note in notifications:
+        note.was_seen = True
+        note.save()
     return redirect('/staff')
 
 

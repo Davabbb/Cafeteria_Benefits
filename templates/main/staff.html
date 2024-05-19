@@ -59,9 +59,9 @@
             {% for notification in notifications %}
                 <div class="buy">
                     <span class="buyname">{{ notification }}</span>
-                    <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
-                    <a href="#openModaleditBalance" class="balance_edit_staff" data-balance="{{ notification.received_receipt.pk }}">Галочка</a>
-                    <a href="{% url 'remove_notification' notification.pk %}">x</a>
+                    <a href="{{ notification.received_receipt.image.url }}" title="Посмотреть прикрепленный файл" class="file_look">&#9993</a>
+                    <a href="#openModaleditBalance" class="balance_edit_staff" title="Перейти к редактированию баланса сотрудника" data-balance="{{ notification.received_receipt.pk }}">&#10004</a>
+                    <a href="{% url 'remove_notification' notification.pk %}" title="Перенести уведомление в просмотренные" class="delete_lgota">×</a>
                 </div>
             {% endfor %}
         </div>
@@ -89,17 +89,19 @@
         <a href="#close" title="Close" class="close1">×</a>
 
         <div class="historymodaldiv">
-            <h1 class="historymodalh1">Уведомления</h1>
+            <h1 class="historymodalh1">Просмотренные уведомления</h1>
         </div>
 
         <div class="historymodallist">
             {% for notification in seen_notifications %}
             <div class="buy">
                 <span class="buyname">{{ notification }}</span>
-                <a href="{{ notification.received_receipt.image.url }}">Посмотреть файл</a>
+                <a href="{{ notification.received_receipt.image.url }}" title="Посмотреть прикрепленный файл" class="file_seen_look">&#9993</a>
             </div>
             {% endfor %}
-            <a href="{% url 'delete_seen_notifications' %}">Удалить просмотренные уведомления</a>
+            <div class="button-container">
+                <a href="{% url 'delete_seen_notifications' %}" class="delete_seen_notifications_class">Удалить все уведомления</a>
+            </div>
         </div>
     </div>
 

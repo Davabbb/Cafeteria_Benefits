@@ -104,7 +104,7 @@
             <div class="lgota">
                 <span class="lgotaname" title="{{ product.description }}">{{ product.name }}</span>
                 <span class="lgotaprice">{{ product.price }}</span>
-                <a href="{% url 'remove_from_wishlist' product.pk %}" title="Delete_lgota" class="delete_lgota">×</a>
+                <a href="{% url 'remove_from_wishlist' product.pk %}" title="Удалить льготу" class="delete_lgota">×</a>
                 {% if money < product.price %}
                     <button class="lgotabtn" type="submit" disabled>
                         <span class="lgotakorsina">Купить</span>

@@ -7,7 +7,7 @@ class Notification(models.Model):
     was_seen = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Работник: {self.received_receipt.worker.user.username}, Дата: {self.received_receipt.date}"
+        return f"От {self.received_receipt.worker.user.username}, {self.received_receipt.date}"
 
     class Meta:
         verbose_name = 'Уведомление'
