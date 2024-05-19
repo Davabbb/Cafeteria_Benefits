@@ -299,7 +299,7 @@ header {
 .delete_lgota {
 	position: relative;
 	left: 780px;
-	top: 15px;
+	top: 10px;
     font-family: sans-serif;
     font-size: 100px;
     font-weight: 700;
@@ -319,7 +319,7 @@ header {
 .file_look {
 	position: relative;
 	left: 740px;
-	top: 5px;
+	top: 0px;
     font-family: sans-serif;
     font-size: 70px;
     font-weight: 700;
@@ -385,7 +385,7 @@ header {
 .balance_edit_staff {
 	position: relative;
 	left: 760px;
-	top: 0px;
+	top: -5px;
     font-family: sans-serif;
     font-size: 60px;
     font-weight: 700;
